@@ -40,7 +40,7 @@
             assumenda, commodi totam iste quam vitae ea!</div>
         <div class="w-175">
             <nav class="flex items-center justify-between text-xs">
-                <ul class="uppercase font-semibold flex space-x-10 pb-3 border-b-4 border-gray-20">
+                <ul class="uppercase font-semibold flex space-x-10 rtl:space-x-reverse pb-3 border-b-4 border-gray-20">
                     <li><a href="" class="pb-3 border-b-4 border-blue">All ideas (87)</a></li>
                     <li><a href=""
                             class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">Considering

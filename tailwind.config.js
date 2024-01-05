@@ -31,6 +31,9 @@ export default {
             fontFamily: {
                 sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                xxs: "0.625rem",
+            },
         },
     },
 
