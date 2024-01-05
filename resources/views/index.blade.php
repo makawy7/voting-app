@@ -192,7 +192,8 @@
                     <h4 class="text-xl font-semibold">
                         <a class="hover:underline" href="">A random title can go here</a>
                     </h4>
-                    <p class="mt-3 text-gray-600 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    <p class="mt-3 text-gray-600 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit.
                         Explicabo
                         atque nesciunt placeat asperiores animi at distinctio sint deleniti neque optio quam velit qui
                         eaque, laudantium eligendi impedit ab aspernatur quis rem aliquid cumque repellat! Dignissimos
@@ -265,7 +266,8 @@
                     <h4 class="text-xl font-semibold">
                         <a class="hover:underline" href="">A random title can go here</a>
                     </h4>
-                    <p class="mt-3 text-gray-600 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    <p class="mt-3 text-gray-600 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit.
                         Explicabo
                         atque nesciunt placeat asperiores animi at distinctio sint deleniti neque optio quam velit qui
                         eaque, laudantium eligendi impedit ab aspernatur quis rem aliquid cumque repellat! Dignissimos
@@ -338,7 +340,8 @@
                     <h4 class="text-xl font-semibold">
                         <a class="hover:underline" href="">A random title can go here</a>
                     </h4>
-                    <p class="mt-3 text-gray-600 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    <p class="mt-3 text-gray-600 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit.
                         Explicabo
                         atque nesciunt placeat asperiores animi at distinctio sint deleniti neque optio quam velit qui
                         eaque, laudantium eligendi impedit ab aspernatur quis rem aliquid cumque repellat! Dignissimos

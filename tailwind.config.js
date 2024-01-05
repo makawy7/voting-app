@@ -23,6 +23,7 @@ export default {
             },
             spacing: {
                 70: "17.5rem",
+                75: "18.75rem",
                 175: "43.75rem",
             },
             maxWidth: {
