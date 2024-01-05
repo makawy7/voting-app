@@ -22,6 +22,8 @@ export default {
                 purple: "#8b60ed",
             },
             spacing: {
+                .75: "0.188rem",
+                22: "5.5rem",
                 70: "17.5rem",
                 75: "18.75rem",
                 175: "43.75rem",
