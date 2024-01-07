@@ -16,7 +16,7 @@
 </head>
 
 <body class="font-sans bg-background text-gray-900 text-sm overflow-y-scroll">
-    <header class="flex items-center justify-between px-8 py-4">
+    <header class="flex flex-col sm:flex-row items-center justify-between px-8 pt-8 sm:py-4">
         <a wire:navigate href="/"><img src="{{ asset('img/logo-dark.svg') }}" alt=""></a>
         <div class="flex items-center">
             @if (Route::has('login'))
@@ -30,9 +30,9 @@
     </header>
 
     <main class="container max-w-custom mx-auto">
-        <div class="w-175 relative mx-auto">
-            <div class="w-70 absolute -left-75 top-16">
-                <div class="border border-blue rounded-xl text-center py-4 px-3 pt-6 bg-white">
+        <div class="flex flex-col items-center sm:items-stretch sm:flex-row sm:-translate-x-37.5">
+            <div class="w-70 hidden sm:block sm:mr-5 sm:mt-16">
+                <div class="border border-blue rounded-xl text-center sticky top-8 py-4 px-3 pt-6 bg-white">
                     <h3 class="text-xl font-semibold">Add an idea</h3>
                     <p class="mt-1 font-medium px-4">
                         Let us know what you would like and we'll take a look over!
@@ -64,35 +64,39 @@
                     </form>
                 </div>
             </div>
-            <nav class="flex items-center justify-between text-xs">
-                <ul class="uppercase font-semibold flex space-x-10 rtl:space-x-reverse pb-3 border-b-4 border-gray-20">
-                    <li><a href="" class="pb-3 border-b-4 border-blue">All ideas (87)</a></li>
-                    <li><a href=""
-                            class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">Considering
-                            (6)</a></li>
-                    <li><a href=""
-                            class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">In
-                            Progress (1)</a></li>
-                </ul>
-                <ul class="uppercase font-semibold flex space-x-10 pb-3 border-b-4 border-gray-20">
-                    <li>
-                        <a href=""
-                            class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">implemented
-                            (10)
-                        </a>
-                    </li>
-                    <li>
-                        <a href=""
-                            class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">
-                            Closed (55)
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="mt-8">
-                {{ $slot }}
+            <div class="w-full px-2 sm:px-0 sm:w-175 mx-auto">
+                <nav class="hidden sm:flex items-center justify-between text-xs">
+                    <ul
+                        class="uppercase font-semibold flex space-x-10 rtl:space-x-reverse pb-3 border-b-4 border-gray-20">
+                        <li><a href="" class="pb-3 border-b-4 border-blue">All ideas (87)</a></li>
+                        <li><a href=""
+                                class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">Considering
+                                (6)</a></li>
+                        <li><a href=""
+                                class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">In
+                                Progress (1)</a></li>
+                    </ul>
+                    <ul class="uppercase font-semibold flex space-x-10 pb-3 border-b-4 border-gray-20">
+                        <li>
+                            <a href=""
+                                class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">implemented
+                                (10)
+                            </a>
+                        </li>
+                        <li>
+                            <a href=""
+                                class="text-gray-400 pb-3 border-b-4 transition ease-in duration-150 hover:border-blue">
+                                Closed (55)
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mt-4 sm:mt-8">
+                    {{ $slot }}
+                </div>
             </div>
         </div>
+
     </main>
 
 

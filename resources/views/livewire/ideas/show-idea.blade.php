@@ -8,13 +8,13 @@
         <span class="ml-1">All ideas</span>
     </a>
     <div class="idea-container hover:shadow-lg transition ease-in duration-150 bg-white rounded-xl mt-2">
-        <div class="flex px-5 py-6">
+        <div class="flex flex-col sm:flex-row px-5 py-6">
             <a href="" class="flex-none self-start">
                 <img class="w-14 h-14 rounded-xl" src="https://source.unsplash.com/200x200/?face&crop=face&v=1"
                     alt="avatar">
             </a>
-            <div class="ml-4 w-full">
-                <h4 class="text-xl font-semibold">
+            <div class="sm:ml-4 w-full">
+                <h4 class="text-xl font-semibold mt-2 sm:mt-0">
                     <a wire:navigate class="hover:underline" href="/idea">A random title can go here</a>
                 </h4>
                 <p class="mt-3 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -27,17 +27,24 @@
                     quidem veritatis enim numquam a sit facilis eius optio vel! Dolor totam dolore non reiciendis!
                     Totam quisquam quae tenetur quasi sit? Reiciendis, natus?
                 </p>
-                <div class="flex items-center justify-between mt-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
                     <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
-                        <div class="font-bold text-gray-900">Jhon Doe</div>
-                        <div>&bull;</div>
+                        <div class="font-bold text-gray-900 hidden sm:block">Jhon Doe</div>
+                        <div class="hidden sm:block">&bull;</div>
                         <div>10 hours ago</div>
                         <div>&bull;</div>
                         <div>Category</div>
                         <div>&bull;</div>
                         <a class="text-gray-900" href="">6 comments</a>
                     </div>
-                    <div class="flex items-center space-x-2">
+                    <div class="flex items-center justify-end mt-3 sm:mt-0 space-x-2">
+                        <div class="flex sm:hidden mr-auto bg-gray-100 rounded-xl">
+                            <div class="px-4 py-1">
+                                <span class="block text-center font-bold leading-none">12</span>
+                                <span class="text-xs font-semibold leading-none text-gray-500">Votes</span>
+                            </div>
+                            <button class="bg-gray-300 px-4 rounded-xl">Vote</button>
+                        </div>
                         <div
                             class="bg-gray-200 w-28 py-2 text-xxs font-bold uppercase leading-none rounded-full text-center">
                             Open</div>
@@ -50,7 +57,7 @@
                             </svg>
 
                             <ul x-show="open" x-transition x-cloak @click.away="open = false"
-                                class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
+                                class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                 <li>
                                     <a href=""
                                         class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
@@ -71,12 +78,13 @@
             </div>
         </div>
     </div>
-    <div class="mt-4 ml-6 flex justify-between">
-        <div class="flex items-center  space-x-3">
-            <div x-data="{open:false}" class="relative">
-                <button @click="open = !open" class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
-                <form x-show="open" x-transition x-cloak @click.away="open = false"
-                    class="absolute mt-2 text-gray-900 text-left font-semibold w-96 z-10 px-3 py-4 space-y-2 shadow-xl rounded-xl bg-white">
+    <div class="mt-4 sm:ml-6 flex justify-center sm:justify-between">
+        <div class="flex items-center space-x-1 sm:space-x-3">
+            <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open"
+                    class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
+                <form x-show="open" x-cloak @click.away="open = false"
+                    class="absolute -translate-x-10 sm:-translate-x-0 mt-2 text-gray-900 text-left font-semibold w-80 sm:w-96 z-10 px-3 py-4 space-y-2 shadow-xl rounded-xl bg-white">
                     <textarea class="border-none bg-gray-100 px-4 py-2 rounded-xl w-full text-xs placeholder-gray-500" name="comment"
                         id="comment" rows="5" placeholder="Go ahead, don't be shy. Share your thoughts"></textarea>
                     <div class="flex items-center space-x-2">
@@ -104,8 +112,8 @@
                             clip-rule="evenodd" />
                     </svg>
                 </button>
-                <div x-show="open" x-transition x-cloak @click.away="open = false"
-                    class="absolute z-10 mt-2 w-80 bg-white rounded-xl shadow-xl px-4 py-5">
+                <div x-show="open" x-cloak @click.away="open = false"
+                    class="absolute -translate-x-36 sm:-translate-x-0 z-10 mt-2 w-80 bg-white rounded-xl shadow-xl px-4 py-5">
                     <form class="space-y-2">
                         <div>
                             <input
@@ -150,8 +158,7 @@
                                 </svg>
                                 <span>Attach</span>
                             </button>
-                            <button type="submit"
-                                class="py-2 px-6 bg-blue text-white rounded-xl">Update</button>
+                            <button type="submit" class="py-2 px-6 bg-blue text-white rounded-xl">Update</button>
                         </div>
                         <div class="flex items-center">
                             <input type="checkbox" name="notify_users" id="notify_users"
@@ -162,7 +169,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center space-x-3">
+        <div class="hidden sm:flex items-center space-x-3">
             <div class="text-center bg-white p-2 rounded-xl">
                 <h3 class="text-xl font-semibold leading-none">12</h3>
                 <p class="text-gray-500 text-xs leading-none">Votes</p>
@@ -174,10 +181,10 @@
         </div>
     </div><!-- end of buttons container -->
     <div
-        class="relative comments-container space-y-6 ml-22 pt-2 mb-8 before:content-[''] before:absolute before:-left-10 before:w-0.75 before:h-full before:bg-gray-200">
+        class="relative comments-container space-y-6 sm:ml-22 pt-2 mb-8 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:w-0.75 sm:before:h-full sm:before:bg-gray-200">
         <div class="pt-6">
             <div
-                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200">
+                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200">
                 <div class="flex px-5 py-6">
                     <a href="" class="flex-none self-start">
                         <img class="w-14 h-14 rounded-xl"
@@ -203,7 +210,7 @@
                                     </svg>
 
                                     <ul x-show="open" x-transition x-cloak @click.away="open = false"
-                                        class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
+                                        class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
                                                 class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
@@ -225,7 +232,7 @@
                 </div><!-- end of comment container -->
             </div>
             <div
-                class="relative comment-container hover:shadow-md border border-blue transition ease-in duration-150 bg-white rounded-xl mt-3 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200 after:content-[''] after:w-7 after:h-7 after:bg-purple after:border-4 after:border-white after:absolute after:rounded-full after:top-1/2 after:-left-10 after:-translate-x-3 after:-translate-y-3">
+                class="relative comment-container hover:shadow-md border border-blue transition ease-in duration-150 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200 sm:after:content-[''] sm:after:w-7 sm:after:h-7 sm:after:bg-purple sm:after:border-4 sm:after:border-white sm:after:absolute sm:after:rounded-full sm:after:top-1/2 sm:after:-left-10 sm:after:-translate-x-3 sm:after:-translate-y-3">
                 <div class="flex px-5 py-6">
                     <a href="" class="flex-none self-start">
                         <img class="w-14 h-14 rounded-xl"
@@ -257,7 +264,7 @@
                                     </svg>
 
                                     <ul x-show="open" x-transition x-cloak @click.away="open = false"
-                                        class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
+                                        class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
                                                 class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
@@ -279,7 +286,7 @@
                 </div><!-- end of comment container -->
             </div>
             <div
-                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200 after:content-[''] after:absolute after:-left-10 after:w-0.75 after:top-1/2 after:translate-y-0.75 after:h-1/2 after:bg-background">
+                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200 sm:after:content-[''] sm:after:absolute sm:after:-left-10 sm:after:w-0.75 sm:after:top-1/2 sm:after:translate-y-0.75 sm:after:h-1/2 sm:after:bg-background">
                 <div class="flex px-5 py-6">
                     <a href="" class="flex-none self-start">
                         <img class="w-14 h-14 rounded-xl"
@@ -308,7 +315,7 @@
                                     </svg>
 
                                     <ul x-show="open" x-transition x-cloak @click.away="open = false"
-                                        class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
+                                        class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
                                                 class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
