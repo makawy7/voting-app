@@ -49,7 +49,7 @@
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                             </svg>
 
-                            <ul x-show="open" x-transition x-cloak
+                            <ul x-show="open" x-transition x-cloak @click.away="open = false"
                                 class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                 <li>
                                     <a href=""
@@ -73,17 +73,17 @@
     </div>
     <div class="mt-4 ml-6 flex justify-between">
         <div class="flex items-center  space-x-3">
-            <div class="relative">
-                <button class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
-                <form
-                    class="absolute hidden mt-2 text-gray-900 text-left font-semibold w-96 z-10 px-3 py-4 space-y-2 shadow-xl rounded-xl bg-white">
-                    <textarea class="border-none bg-gray-100 px-4 py-2 rounded-xl text-xs w-full placeholder-gray-900" name="comment"
+            <div x-data="{open:false}" class="relative">
+                <button @click="open = !open" class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
+                <form x-show="open" x-transition x-cloak @click.away="open = false"
+                    class="absolute mt-2 text-gray-900 text-left font-semibold w-96 z-10 px-3 py-4 space-y-2 shadow-xl rounded-xl bg-white">
+                    <textarea class="border-none bg-gray-100 px-4 py-2 rounded-xl w-full text-xs placeholder-gray-500" name="comment"
                         id="comment" rows="5" placeholder="Go ahead, don't be shy. Share your thoughts"></textarea>
                     <div class="flex items-center space-x-2">
                         <button type="submit"
-                            class="py-2 px-8 bg-blue shadow-sm shadow-blue text-xs text-white rounded-xl">Post
+                            class="py-2 px-8 bg-blue shadow-sm shadow-blue text-white rounded-xl">Post
                             Comment</button>
-                        <button class="py-2 px-4 flex w-fit items-center gap-0.5 bg-gray-200 text-xs rounded-xl"> <svg
+                        <button class="py-2 px-4 flex w-fit items-center gap-0.5 bg-gray-200 rounded-xl"> <svg
                                 xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 -rotate-45 text-gray-600"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -94,8 +94,8 @@
                     </div>
                 </form>
             </div>
-            <div class="relative">
-                <button class="h-10 px-5 bg-gray-200 rounded-xl font-semibold">
+            <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="h-10 px-5 bg-gray-200 rounded-xl font-semibold">
                     <span class="ml-1">Set Status</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20"
                         fill="currentColor">
@@ -104,7 +104,8 @@
                             clip-rule="evenodd" />
                     </svg>
                 </button>
-                <div class="absolute z-10 mt-2 w-80 bg-white rounded-xl shadow-xl px-4 py-5">
+                <div x-show="open" x-transition x-cloak @click.away="open = false"
+                    class="absolute z-10 mt-2 w-80 bg-white rounded-xl shadow-xl px-4 py-5">
                     <form class="space-y-2">
                         <div>
                             <input
@@ -150,12 +151,12 @@
                                 <span>Attach</span>
                             </button>
                             <button type="submit"
-                                class="py-2 px-6 bg-blue text-xs text-white rounded-xl">Update</button>
+                                class="py-2 px-6 bg-blue text-white rounded-xl">Update</button>
                         </div>
-                        <div class="felx items-center">
+                        <div class="flex items-center">
                             <input type="checkbox" name="notify_users" id="notify_users"
                                 class="bg-gray-200 border-none focus:ring-0 rounded">
-                            <label for="notify_users" class="text-xs text-gray-900">Notify All voters</label>
+                            <label for="notify_users" class="text-gray-900 ml-1">Notify All voters</label>
                         </div>
                     </form>
                 </div>
@@ -201,7 +202,7 @@
                                             d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                     </svg>
 
-                                    <ul x-show="open" x-transition x-cloak
+                                    <ul x-show="open" x-transition x-cloak @click.away="open = false"
                                         class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
@@ -255,7 +256,7 @@
                                             d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                     </svg>
 
-                                    <ul x-show="open" x-transition x-cloak
+                                    <ul x-show="open" x-transition x-cloak @click.away="open = false"
                                         class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
@@ -306,7 +307,7 @@
                                             d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                     </svg>
 
-                                    <ul x-show="open" x-transition x-cloak
+                                    <ul x-show="open" x-transition x-cloak @click.away="open = false"
                                         class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""

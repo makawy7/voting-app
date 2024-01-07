@@ -76,7 +76,7 @@
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                 </svg>
 
-                                <ul x-show="open" x-transition x-cloak
+                                <ul x-show="open" @click.away="open = false" x-transition x-cloak
                                     class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
                                     <li>
                                         <a href=""
@@ -149,7 +149,7 @@
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                 </svg>
 
-                                <ul x-show="open" x-transition x-cloak
+                                <ul x-show="open" @click.away="open = false" x-transition x-cloak
                                     class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
                                     <li>
                                         <a href=""
@@ -223,7 +223,7 @@
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                 </svg>
 
-                                <ul x-show="open" x-transition x-cloak
+                                <ul x-show="open" @click.away="open = false" x-transition x-cloak
                                     class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
                                     <li>
                                         <a href=""
@@ -297,7 +297,7 @@
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                 </svg>
 
-                                <ul x-show="open" x-transition x-cloak
+                                <ul x-show="open" @click.away="open = false" x-transition x-cloak
                                     class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
                                     <li>
                                         <a href=""
@@ -371,7 +371,7 @@
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                                 </svg>
 
-                                <ul x-show="open" x-transition x-cloak
+                                <ul x-show="open" @click.away="open = false" x-transition x-cloak
                                     class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
                                     <li>
                                         <a href=""
