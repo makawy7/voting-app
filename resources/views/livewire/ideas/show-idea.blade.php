@@ -50,7 +50,7 @@
                             </svg>
 
                             <ul x-show="open" x-transition x-cloak
-                                class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
+                                class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                 <li>
                                     <a href=""
                                         class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
@@ -73,13 +73,93 @@
     </div>
     <div class="mt-4 ml-6 flex justify-between">
         <div class="flex items-center  space-x-3">
-            <button class="h-10 px-8 bg-blue text-white rounded-xl font-semibold">Reply</button>
-            <select class="rounded-xl h-10 pl-4 font-semibold border-none w-full bg-gray-200" name="status"
-                id="status">
-                <option value="Set Status">Set Status</option>
-                <option value="Set Status">Set Status</option>
-                <option value="Set Status">Set Status</option>
-            </select>
+            <div class="relative">
+                <button class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
+                <form
+                    class="absolute hidden mt-2 text-gray-900 text-left font-semibold w-96 z-10 px-3 py-4 space-y-2 shadow-xl rounded-xl bg-white">
+                    <textarea class="border-none bg-gray-100 px-4 py-2 rounded-xl text-xs w-full placeholder-gray-900" name="comment"
+                        id="comment" rows="5" placeholder="Go ahead, don't be shy. Share your thoughts"></textarea>
+                    <div class="flex items-center space-x-2">
+                        <button type="submit"
+                            class="py-2 px-8 bg-blue shadow-sm shadow-blue text-xs text-white rounded-xl">Post
+                            Comment</button>
+                        <button class="py-2 px-4 flex w-fit items-center gap-0.5 bg-gray-200 text-xs rounded-xl"> <svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 -rotate-45 text-gray-600"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                            </svg>
+                            <span>Attach</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="relative">
+                <button class="h-10 px-5 bg-gray-200 rounded-xl font-semibold">
+                    <span class="ml-1">Set Status</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div class="absolute z-10 mt-2 w-80 bg-white rounded-xl shadow-xl px-4 py-5">
+                    <form class="space-y-2">
+                        <div>
+                            <input
+                                class="mr-0.5 bg-gray-200 border-none checked:bg-none focus:ring-0 focus:ring-offset-0 text-gray-900"
+                                type="radio" id="open" name="drone" value="open" checked />
+                            <label class="font-semibold" for="open">Open</label>
+                        </div>
+                        <div>
+                            <input
+                                class="mr-0.5 bg-gray-200 border-none checked:bg-none focus:ring-0 focus:ring-offset-0 text-purple"
+                                type="radio" id="considering" name="drone" value="considering" />
+                            <label class="font-semibold" for="considering">Considering</label>
+                        </div>
+                        <div>
+                            <input
+                                class="mr-0.5 bg-gray-200 border-none checked:bg-none focus:ring-0 focus:ring-offset-0 text-yellow"
+                                type="radio" id="progress" name="drone" value="progress" />
+                            <label class="font-semibold" for="progress">In Progress</label>
+                        </div>
+                        <div>
+                            <input
+                                class="mr-0.5 bg-gray-200 border-none checked:bg-none focus:ring-0 focus:ring-offset-0 text-green"
+                                type="radio" id="implemented" name="drone" value="implemented" />
+                            <label class="font-semibold" for="implemented">Implemented</label>
+                        </div>
+                        <div>
+                            <input
+                                class="mr-0.5 bg-gray-200 border-none checked:bg-none focus:ring-0 focus:ring-offset-0 text-red"
+                                type="radio" id="closed" name="drone" value="closed" />
+                            <label class="font-semibold" for="closed">Closed</label>
+                        </div>
+                        <div class="pt-2">
+                            <textarea class="w-full border-none text-xs bg-gray-100 rounded-xl placeholder-gray-900" name="update_comment"
+                                id="update_comment" rows="3" placeholder="Add an update comment (optional)"></textarea>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="py-2 px-6 flex w-fit items-center gap-0.5 bg-gray-200 text-xs rounded-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 -rotate-45 text-gray-600"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                </svg>
+                                <span>Attach</span>
+                            </button>
+                            <button type="submit"
+                                class="py-2 px-6 bg-blue text-xs text-white rounded-xl">Update</button>
+                        </div>
+                        <div class="felx items-center">
+                            <input type="checkbox" name="notify_users" id="notify_users"
+                                class="bg-gray-200 border-none focus:ring-0 rounded">
+                            <label for="notify_users" class="text-xs text-gray-900">Notify All voters</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="flex items-center space-x-3">
             <div class="text-center bg-white p-2 rounded-xl">
@@ -96,11 +176,11 @@
         class="relative comments-container space-y-6 ml-22 pt-2 mb-8 before:content-[''] before:absolute before:-left-10 before:w-0.75 before:h-full before:bg-gray-200">
         <div class="pt-6">
             <div
-                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-2 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200">
+                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200">
                 <div class="flex px-5 py-6">
                     <a href="" class="flex-none self-start">
-                        <img class="w-14 h-14 rounded-xl" src="https://source.unsplash.com/200x200/?face&crop=face&v=2"
-                            alt="avatar">
+                        <img class="w-14 h-14 rounded-xl"
+                            src="https://source.unsplash.com/200x200/?face&crop=face&v=2" alt="avatar">
                     </a>
                     <div class="ml-4 w-full">
                         <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, illo.
@@ -122,7 +202,7 @@
                                     </svg>
 
                                     <ul x-show="open" x-transition x-cloak
-                                        class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
+                                        class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
                                                 class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
@@ -144,11 +224,11 @@
                 </div><!-- end of comment container -->
             </div>
             <div
-                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-2 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200 after:content-[''] after:w-7 after:h-7 after:bg-purple after:border-4 after:border-white after:absolute after:rounded-full after:top-1/2 after:-left-10 after:-translate-x-3 after:-translate-y-3">
+                class="relative comment-container hover:shadow-md border border-blue transition ease-in duration-150 bg-white rounded-xl mt-3 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200 after:content-[''] after:w-7 after:h-7 after:bg-purple after:border-4 after:border-white after:absolute after:rounded-full after:top-1/2 after:-left-10 after:-translate-x-3 after:-translate-y-3">
                 <div class="flex px-5 py-6">
                     <a href="" class="flex-none self-start">
-                        <img class="w-14 h-14 rounded-xl" src="https://source.unsplash.com/200x200/?face&crop=face&v=3"
-                            alt="avatar">
+                        <img class="w-14 h-14 rounded-xl"
+                            src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar">
                         <div class="font-bold uppercase text-xxs text-center mt-0.5 text-blue">admin</div>
 
                     </a>
@@ -176,7 +256,7 @@
                                     </svg>
 
                                     <ul x-show="open" x-transition x-cloak
-                                        class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
+                                        class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
                                                 class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
@@ -198,7 +278,7 @@
                 </div><!-- end of comment container -->
             </div>
             <div
-                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-2 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200 after:content-[''] after:absolute after:-left-10 after:w-0.75 after:top-1/2 after:translate-y-0.75 after:h-1/2 after:bg-background">
+                class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 before:content-[''] before:absolute before:-left-10 before:top-1/2 before:w-10 before:h-0.75 before:bg-gray-200 after:content-[''] after:absolute after:-left-10 after:w-0.75 after:top-1/2 after:translate-y-0.75 after:h-1/2 after:bg-background">
                 <div class="flex px-5 py-6">
                     <a href="" class="flex-none self-start">
                         <img class="w-14 h-14 rounded-xl"
@@ -227,7 +307,7 @@
                                     </svg>
 
                                     <ul x-show="open" x-transition x-cloak
-                                        class="absolute ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
+                                        class="absolute ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
                                         <li>
                                             <a href=""
                                                 class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
