@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Home;
 use App\Livewire\Ideas\ShowIdea;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'index');
+Route::get('/', Home::class)->name('idea.index');
+Route::get('/ideas/{idea:slug}', ShowIdea::class)->name('idea.show');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('/idea', ShowIdea::class);
 
 require __DIR__ . '/auth.php';

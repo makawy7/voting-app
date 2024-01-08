@@ -15,23 +15,15 @@
             </a>
             <div class="sm:ml-4 w-full">
                 <h4 class="text-xl font-semibold mt-2 sm:mt-0">
-                    <a wire:navigate class="hover:underline" href="/idea">A random title can go here</a>
+                    <a wire:navigate class="hover:underline" href="/idea">{{ $idea->title }}</a>
                 </h4>
-                <p class="mt-3 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptas itaque cumque a perferendis, consequatur nihil error dolorum atque voluptates suscipit
-                    velit harum reiciendis amet possimus explicabo alias voluptatum quaerat quod eum officiis. Porro
-                    deserunt excepturi, tempora doloremque ipsa veniam laborum! Provident fuga omnis dignissimos
-                    recusandae, iure nesciunt eveniet, doloribus perferendis saepe incidunt maiores eligendi
-                    blanditiis nihil non, magnam numquam necessitatibus voluptatum optio vitae. Nam minima
-                    reiciendis, iste natus quae ducimus, ipsa sequi nesciunt ipsam delectus nihil voluptatibus
-                    quidem veritatis enim numquam a sit facilis eius optio vel! Dolor totam dolore non reiciendis!
-                    Totam quisquam quae tenetur quasi sit? Reiciendis, natus?
+                <p class="mt-3 text-gray-600">{{ $idea->description }}
                 </p>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
                     <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
-                        <div class="font-bold text-gray-900 hidden sm:block">Jhon Doe</div>
+                        <div class="font-bold text-gray-900 hidden sm:block">{{ $idea->user->name }}</div>
                         <div class="hidden sm:block">&bull;</div>
-                        <div>10 hours ago</div>
+                        <div>{{ $idea->created_at->diffForHumans() }}</div>
                         <div>&bull;</div>
                         <div>Category</div>
                         <div>&bull;</div>

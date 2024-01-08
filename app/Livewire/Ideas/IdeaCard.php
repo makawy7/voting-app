@@ -5,7 +5,7 @@ namespace App\Livewire\Ideas;
 use App\Models\Idea;
 use Livewire\Component;
 
-class ShowIdea extends Component
+class IdeaCard extends Component
 {
     public Idea $idea;
 
@@ -15,6 +15,6 @@ class ShowIdea extends Component
     }
     public function render()
     {
-        return view('livewire.ideas.show-idea');
+        return view('livewire.ideas.idea-card');
     }
 }
