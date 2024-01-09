@@ -16,7 +16,7 @@ class Home extends Component
     {
         return view('livewire.home', [
             'ideas' => Idea::with('user', 'category', 'status')
-                ->latest()
+                ->orderBy('id', 'desc')
                 ->paginate(Idea::PAGINATION_COUNT),
         ]);
     }
