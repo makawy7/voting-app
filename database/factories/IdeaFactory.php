@@ -21,6 +21,7 @@ class IdeaFactory extends Factory
         return [
             'user_id' => User::factory(),
             'category_id' => fake()->numberBetween(1, 4),
+            'status_id' => fake()->numberBetween(1, 5),
             'title' => ucwords(fake()->words(4, true)),
             'description' => fake()->paragraph(4),
         ];

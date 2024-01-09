@@ -36,9 +36,7 @@
                         </div>
                         <button class="bg-gray-300 px-4 rounded-xl">Vote</button>
                     </div>
-                    <div
-                        class="bg-gray-200 w-28 py-2 text-xxs font-bold uppercase leading-none rounded-full text-center">
-                        Open</div>
+                    <x-ideas.status-label :status="$idea->status->name" />
                     <button x-data="{ open: false }" @click="open = !open"
                         class="relative bg-gray-100 hover:bg-gray-200 rounded-full border h-7 px-3 transition ease-in duration-150">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor"

@@ -13,7 +13,7 @@ class Home extends Component
     public function render()
     {
         return view('livewire.home', [
-            'ideas' => Idea::with('user', 'category')
+            'ideas' => Idea::with('user', 'category', 'status')
                 ->paginate(Idea::PAGINATION_COUNT),
         ]);
     }
