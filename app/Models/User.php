@@ -47,4 +47,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Idea::class);
     }
+
+    public function getAvatarAttribute()
+    {
+        $size = 200;
+        $default = 'monsterid';
+        $grav_url = "https://www.gravatar.com/avatar/"
+            . md5(strtolower(trim($this->email)))
+            . "?d="
+            . $default
+            . "&s=" . $size;
+        return $grav_url;
+    }
 }

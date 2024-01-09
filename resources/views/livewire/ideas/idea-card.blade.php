@@ -11,8 +11,7 @@
     </div>
     <div class="flex flex-col sm:flex-row flex-1 px-2 py-6">
         <a href="" class="flex-none sm:mx-0">
-            <img class="w-14 h-14 rounded-xl" src="https://source.unsplash.com/200x200/?face&crop=face&v=1"
-                alt="avatar">
+            <img class="w-14 h-14 rounded-xl" src="{{ $idea->user->avatar }}" alt="avatar">
         </a>
         <div class="sm:mx-4 w-full">
             <h4 class="text-xl font-semibold mt-2 sm:mt-0">
@@ -25,7 +24,7 @@
                 <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
                     <div>{{ $idea->created_at->diffForHumans() }}</div>
                     <div>&bull;</div>
-                    <div>Category</div>
+                    <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
                     <a class="text-gray-900" href="">6 comments</a>
                 </div>
