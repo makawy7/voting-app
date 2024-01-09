@@ -11,18 +11,20 @@ export default {
 
     theme: {
         extend: {
-            colors: {
-                background: "#f7f8fc",
-                blue: "#328af1",
-                "blue-hover": "#2879bd",
-                yellow: "#ffc73c",
-                red: "#ec454f",
-                "blue-hover": "#2879bd",
-                green: "#1aab8b",
-                purple: "#8b60ed",
+            colors(theme) {
+                return {
+                    background: "#f7f8fc",
+                    "blue-hover": "#2879bd",
+                    blue: { ...theme.colors.blue, DEFAULT: "#328af1" },
+                    yellow: { ...theme.colors.yellow, DEFAULT: "#ffc73c" },
+                    red: { ...theme.colors.red, DEFAULT: "#ec454f" },
+                    green: { ...theme.colors.green, DEFAULT: "#1aab8b" },
+                    purple: { ...theme.colors.purple, DEFAULT: "#8b60ed" },
+                    "blue-hover": "#2879bd",
+                };
             },
             spacing: {
-                .75: "0.188rem",
+                0.75: "0.188rem",
                 22: "5.5rem",
                 37.5: "9.375rem",
                 70: "17.5rem",
