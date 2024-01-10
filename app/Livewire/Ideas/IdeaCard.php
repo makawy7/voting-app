@@ -4,9 +4,11 @@ namespace App\Livewire\Ideas;
 
 use App\Models\Idea;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class IdeaCard extends Component
 {
+
     public $idea;
     public $votedByUser;
     public $voteCount;
@@ -22,7 +24,7 @@ class IdeaCard extends Component
         if (!auth()->check()) {
             return $this->redirect(route('login'), navigate: true);
         }
-
+        
         if ($this->votedByUser) {
             $this->idea->unVote(auth()->user());
             $this->voteCount--;

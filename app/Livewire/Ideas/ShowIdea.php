@@ -28,8 +28,6 @@ class ShowIdea extends Component
             $this->idea->vote(auth()->user());
             $this->votedByUser = true;
         }
-
-        $this->render();
     }
     public function render()
     {

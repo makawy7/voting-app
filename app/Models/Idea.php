@@ -53,7 +53,8 @@ class Idea extends Model
         if (!$user) {
             return false;
         }
-        $this->votes()->attach($user);
+        // syncWithoutDetaching instead of attach - because of the brower's back button bug
+        $this->votes()->syncWithoutDetaching($user);
     }
     public function unVote(?User $user)
     {
