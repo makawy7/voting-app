@@ -30,11 +30,18 @@
                     </div>
                     <div class="flex items-center justify-end mt-3 sm:mt-0 space-x-2">
                         <div class="flex sm:hidden mr-auto bg-gray-100 rounded-xl">
-                            <div class="px-4 py-1">
-                                <span class="block text-center font-bold leading-none">12</span>
+                            <div class="px-4 py-2">
+                                <span @class([
+                                    'block text-center font-bold leading-none',
+                                    'text-blue' => $voted_by_user,
+                                ])>{{ $idea->votes()->count() }}</span>
                                 <span class="text-xs font-semibold leading-none text-gray-500">Votes</span>
                             </div>
-                            <button class="bg-gray-300 px-4 rounded-xl">Vote</button>
+                            <button @class([
+                                'px-4 rounded-xl',
+                                'bg-blue text-white' => $voted_by_user,
+                                'bg-gray-300' => !$voted_by_user,
+                            ])>Vote</button>
                         </div>
                         <x-ideas.status-label :status="$idea->status->name" />
                         <button x-data="{ open: false }" @click="open = !open"
@@ -160,11 +167,18 @@
         </div>
         <div class="hidden sm:flex items-center space-x-3">
             <div class="text-center bg-white p-2 rounded-xl">
-                <h3 class="text-xl font-semibold leading-none">12</h3>
-                <p class="text-gray-500 text-xs leading-none">Votes</p>
+                <h3 @class([
+                    'text-xl font-semibold leading-none',
+                    'text-blue' => $voted_by_user,
+                ])>
+                    {{ $idea->votes()->count() }}</h3>
+                <p class="text-gray-700 font-semibold mt-1 text-xs leading-none">Votes</p>
             </div>
-            <button
-                class="h-10 px-8 justify-center items-center bg-gray-200 rounded-xl font-bold border border-gray-200 hover:border-gray-400 uppercase">
+            <button @class([
+                'h-10 px-8 justify-center items-center rounded-xl font-bold border uppercase',
+                'bg-blue text-white border-blue-500 hover:border-blue-900' => $voted_by_user,
+                'bg-gray-200 border-gray-200 hover:border-gray-400' => !$voted_by_user,
+            ])>
                 Vote
             </button>
         </div>

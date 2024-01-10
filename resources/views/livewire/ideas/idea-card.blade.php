@@ -1,12 +1,21 @@
 <div class="idea-container hover:shadow-lg transition ease-in duration-150 bg-white px-4 sm:px-0 rounded-xl flex">
     <div class="hidden sm:block px-5 py-8 border-r border-gray-100">
         <div class="text-center">
-            <h3 class="text-2xl font-semibold">12</h3>
+            <h3 @class([
+                'text-2xl font-semibold',
+                'text-blue' => $idea->voted_by_user,
+            ])>{{ $idea->votes_count }}</h3>
             <p class="text-gray-500">Votes</p>
         </div>
         <div class="mt-8">
-            <button
-                class="bg-gray-200 border border-gray-200 px-4 py-3 w-20 rounded-xl text-xxs leading-4 font-bold uppercase transition ease-in duration-150 hover:border-gray-400">Vote</button>
+            <button @class([
+                'border px-4 py-3 w-20 rounded-xl text-xxs leading-4 font-bold uppercase transition ease-in duration-150 ',
+                'bg-blue border-blue hover:border-blue-900 text-white' =>
+                    $idea->voted_by_user,
+                'bg-gray-200 border-gray-200 hover:border-gray-400' => !$idea->voted_by_user,
+            ])>
+
+                Vote</button>
         </div>
     </div>
     <div class="flex flex-col sm:flex-row flex-1 px-2 py-6">
@@ -31,7 +40,10 @@
                 <div class="flex items-center justify-end mt-3 sm:mt-0 space-x-2">
                     <div class="flex sm:hidden mr-auto bg-gray-100 rounded-xl">
                         <div class="px-4 py-1">
-                            <span class="block text-center font-bold leading-none">12</span>
+                            <span @class([
+                                'block text-center font-bold leading-none',
+                                'text-blue' => $idea->voted_by_user,
+                            ])>{{ $idea->votes_count }}</span>
                             <span class="text-xs font-semibold leading-none text-gray-500">Votes</span>
                         </div>
                         <button class="bg-gray-300 px-4 rounded-xl">Vote</button>
