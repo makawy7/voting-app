@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 class Home extends Component
 {
     use WithPagination;
-
+    
     #[On('idea-created')]
     public function render()
     {

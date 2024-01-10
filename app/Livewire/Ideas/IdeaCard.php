@@ -7,11 +7,31 @@ use Livewire\Component;
 
 class IdeaCard extends Component
 {
-    public Idea $idea;
+    public $idea;
+    public $votedByUser;
+    public $voteCount;
 
     public function mount(Idea $idea)
     {
         $this->idea = $idea;
+        $this->votedByUser = $idea->voted_by_user;
+        $this->voteCount = $idea->votes_count;
+    }
+    public function vote()
+    {
+        if (!auth()->check()) {
+            return $this->redirect(route('login'), navigate: true);
+        }
+
+        if ($this->votedByUser) {
+            $this->idea->unVote(auth()->user());
+            $this->voteCount--;
+            $this->votedByUser = false;
+        } else {
+            $this->idea->vote(auth()->user());
+            $this->voteCount++;
+            $this->votedByUser = true;
+        }
     }
     public function render()
     {

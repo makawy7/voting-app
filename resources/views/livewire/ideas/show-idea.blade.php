@@ -33,14 +33,14 @@
                             <div class="px-4 py-2">
                                 <span @class([
                                     'block text-center font-bold leading-none',
-                                    'text-blue' => $voted_by_user,
+                                    'text-blue' => $votedByUser,
                                 ])>{{ $idea->votes()->count() }}</span>
                                 <span class="text-xs font-semibold leading-none text-gray-500">Votes</span>
                             </div>
-                            <button @class([
+                            <button wire:click="vote" type="button" @class([
                                 'px-4 rounded-xl',
-                                'bg-blue text-white' => $voted_by_user,
-                                'bg-gray-300' => !$voted_by_user,
+                                'bg-blue text-white' => $votedByUser,
+                                'bg-gray-300' => !$votedByUser,
                             ])>Vote</button>
                         </div>
                         <x-ideas.status-label :status="$idea->status->name" />
@@ -169,15 +169,15 @@
             <div class="text-center bg-white p-2 rounded-xl">
                 <h3 @class([
                     'text-xl font-semibold leading-none',
-                    'text-blue' => $voted_by_user,
+                    'text-blue' => $votedByUser,
                 ])>
                     {{ $idea->votes()->count() }}</h3>
                 <p class="text-gray-700 font-semibold mt-1 text-xs leading-none">Votes</p>
             </div>
-            <button @class([
+            <button type="button" wire:click="vote" @class([
                 'h-10 px-8 justify-center items-center rounded-xl font-bold border uppercase',
-                'bg-blue text-white border-blue-500 hover:border-blue-900' => $voted_by_user,
-                'bg-gray-200 border-gray-200 hover:border-gray-400' => !$voted_by_user,
+                'bg-blue text-white border-blue-500 hover:border-blue-900' => $votedByUser,
+                'bg-gray-200 border-gray-200 hover:border-gray-400' => !$votedByUser,
             ])>
                 Vote
             </button>
