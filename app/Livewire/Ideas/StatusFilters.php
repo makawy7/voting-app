@@ -3,10 +3,11 @@
 namespace App\Livewire\Ideas;
 
 use App\Models\Status;
-use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 class StatusFilters extends Component
 {
@@ -16,13 +17,17 @@ class StatusFilters extends Component
     public $statusCount;
     public function mount()
     {
-        $this->statusCount = Status::getCount();
-        
+        $this->setStatusCount();
         if (Route::currentRouteName() !== 'idea.index') {
             $this->currentStatus = null;
         }
 
         $this->currentRouteName = Route::currentRouteName();
+    }
+    #[On('idea-created')]
+    public function setStatusCount()
+    {
+        $this->statusCount = Status::getCount();
     }
     public function setStatus($status)
     {
