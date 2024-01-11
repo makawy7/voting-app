@@ -13,8 +13,6 @@ use Livewire\WithPagination;
 class Home extends Component
 {
     use WithPagination;
-
-    #[Url()]
     public $status;
 
     #[On('status-filter')]
