@@ -13,11 +13,15 @@ class StatusFilters extends Component
     #[Url(as: 'status')]
     public $currentStatus = 'All';
     public $currentRouteName;
+    public $statusCount;
     public function mount()
     {
+        $this->statusCount = Status::getCount();
+        
         if (Route::currentRouteName() !== 'idea.index') {
             $this->currentStatus = null;
         }
+
         $this->currentRouteName = Route::currentRouteName();
     }
     public function setStatus($status)
