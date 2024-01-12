@@ -17,14 +17,18 @@ class Home extends Component
 {
     use WithPagination;
 
-    #[Url(as: 'status')]
+    #[Url()]
     public $status;
 
-    #[Url(as: 'category')]
+    #[Url()]
     public $category;
 
     #[Url()]
     public $filter;
+
+    #[Url()]
+    public $search;
+
 
     #[On('status-filter')]
     public function status($status)
@@ -47,6 +51,13 @@ class Home extends Component
         $this->resetPage();
         $this->filter = $filter;
     }
+    #[On('search-filter')]
+    public function search($search)
+    {
+        $this->resetPage();
+        $this->search = $search;
+    }
+
     #[On('idea-created')]
     public function render()
     {
@@ -62,6 +73,8 @@ class Home extends Component
                     return $query->orderByDesc('votes_count');
                 })->when(($this->filter && $this->filter === 'My Ideas' && auth()->check()), function ($query) {
                     return $query->where('user_id', auth()->id());
+                })->when((strlen($this->search) >= 3), function ($query) {
+                    return $query->where('title', 'like', '%' . $this->search . '%');
                 })
                 ->addSelect(['voted_by_user' => Vote::select('id')
                     ->where('user_id', auth()->id())

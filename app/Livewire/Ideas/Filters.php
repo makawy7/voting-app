@@ -13,6 +13,9 @@ class Filters extends Component
 
     #[Url(as: 'filter')]
     public $filter = 'No Filter';
+
+    #[Url()]
+    public $search;
     public function updatedCurrentCategory()
     {
         $this->dispatch('category-filter', $this->currentCategory);
@@ -20,6 +23,10 @@ class Filters extends Component
     public function updatedFilter()
     {
         $this->dispatch('additional-filter', $this->filter);
+    }
+    public function updatedSearch()
+    {
+        $this->dispatch('search-filter', $this->search);
     }
     public function render()
     {
