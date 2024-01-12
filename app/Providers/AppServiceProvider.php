@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // view()->composer('components.layouts.app', function ($view) {
+        //     $view->with(['hi' => 'there']);
+        // });
     }
 }

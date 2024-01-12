@@ -4,15 +4,21 @@ namespace App\Livewire\Ideas;
 
 use App\Models\Idea;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
+#[Title('Idea')]
 class ShowIdea extends Component
 {
     public Idea $idea;
     public $votedByUser;
+    public $backUrl;
     public function mount(Idea $idea)
     {
         $this->idea = $idea;
         $this->votedByUser = $idea->hasVoted(auth()->user());
+
+        $this->backUrl = url()->previous() !== url()->full()
+            ? url()->previous() : route('idea.index');
     }
 
     public function vote()

@@ -1,20 +1,20 @@
 <div>
-    <a wire:navigate href="/" class="font-semibold hover:underline flex items-center">
+    <a wire:navigate href="{{ $backUrl }}" class="font-semibold hover:underline flex items-center">
         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd"
                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                 clip-rule="evenodd" />
         </svg>
-        <span class="ml-1">All ideas</span>
+        <span class="ml-1">Back</span>
     </a>
     <div class="idea-container hover:shadow-lg transition ease-in duration-150 bg-white rounded-xl mt-2">
         <div class="flex flex-col sm:flex-row px-5 py-6">
-            <a href="" class="flex-none self-start">
+            <div href="" class="flex-none self-start">
                 <img class="w-14 h-14 rounded-xl" src="{{ $idea->user->avatar }}" alt="avatar">
-            </a>
+            </div>
             <div class="sm:ml-4 w-full">
                 <h4 class="text-xl font-semibold mt-2 sm:mt-0">
-                    <a wire:navigate class="hover:underline" href="/idea">{{ $idea->title }}</a>
+                    {{ $idea->title }}
                 </h4>
                 <p class="mt-3 text-gray-600">{{ $idea->description }}
                 </p>
@@ -189,9 +189,9 @@
             <div
                 class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200">
                 <div class="flex px-5 py-6">
-                    <a href="" class="flex-none self-start">
+                    <div href="" class="flex-none self-start">
                         <img class="w-14 h-14 rounded-xl" src="{{ $idea->user->avatar }}" alt="avatar">
-                    </a>
+                    </div>
                     <div class="ml-4 w-full">
                         <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, illo.
                         </p>
@@ -236,11 +236,11 @@
             <div
                 class="relative comment-container hover:shadow-md border border-blue transition ease-in duration-150 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200 sm:after:content-[''] sm:after:w-7 sm:after:h-7 sm:after:bg-purple sm:after:border-4 sm:after:border-white sm:after:absolute sm:after:rounded-full sm:after:top-1/2 sm:after:-left-10 sm:after:-translate-x-3 sm:after:-translate-y-3">
                 <div class="flex px-5 py-6">
-                    <a href="" class="flex-none self-start">
+                    <div href="" class="flex-none self-start">
                         <img class="w-14 h-14 rounded-xl" src="{{ $idea->user->avatar }}" alt="avatar">
                         <div class="font-bold uppercase text-xxs text-center mt-0.5 text-blue">admin</div>
 
-                    </a>
+                    </div>
                     <div class="ml-4 w-full">
                         <h4 class="text-xl font-semibold">
                             <a wire:navigate class="hover:underline" href="/idea">A random title can go here</a>
@@ -289,9 +289,9 @@
             <div
                 class="relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200 sm:after:content-[''] sm:after:absolute sm:after:-left-10 sm:after:w-0.75 sm:after:top-1/2 sm:after:translate-y-0.75 sm:after:h-1/2 sm:after:bg-background">
                 <div class="flex px-5 py-6">
-                    <a href="" class="flex-none self-start">
+                    <div href="" class="flex-none self-start">
                         <img class="w-14 h-14 rounded-xl" src="{{ $idea->user->avatar }}" alt="avatar">
-                    </a>
+                    </div>
                     <div class="ml-4 w-full">
                         <p class=" text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                             Voluptatibus eius animi nihil nam, molestias reprehenderit ut modi aspernatur at incidunt

@@ -9,20 +9,20 @@ use Livewire\Attributes\Url;
 class Filters extends Component
 {
     #[Url(as: 'category')]
-    public $category = 'All';
-    public $categories;
+    public $currentCategory = 'All';
 
-    public function mount()
+    #[Url(as: 'filter')]
+    public $filter = 'No Filter';
+    public function updatedCurrentCategory()
     {
-        $this->categories = Category::all();
+        $this->dispatch('category-filter', $this->currentCategory);
     }
-    public function updatedCategory()
+    public function updatedFilter()
     {
-        $categoryId = $this->categories->pluck('id', 'name')->get($this->category);
-        $this->dispatch('category-filter', $categoryId);
+        $this->dispatch('additional-filter', $this->filter);
     }
     public function render()
     {
-        return view('livewire.ideas.filters', ['categories' => $this->categories]);
+        return view('livewire.ideas.filters', ['categories' => Category::all()]);
     }
 }
