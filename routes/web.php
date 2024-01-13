@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Idea;
 use App\Livewire\Home;
 use App\Livewire\Ideas\ShowIdea;
 use Illuminate\Support\Facades\Route;

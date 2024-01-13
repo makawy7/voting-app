@@ -4,6 +4,7 @@ namespace App\Livewire\Ideas;
 
 use App\Models\Idea;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 
 #[Title('Idea')]
@@ -19,6 +20,12 @@ class ShowIdea extends Component
 
         $this->backUrl = url()->previous() !== url()->full()
             ? url()->previous() : route('idea.index');
+    }
+
+    #[On('status-updated')]
+    public function statusGotUpdated()
+    {
+        $this->idea->refresh();
     }
 
     public function vote()

@@ -15,7 +15,9 @@
                 id="">
                 <option value="No Filter">No Filter</option>
                 <option value="Top Voted">Top Voted</option>
-                <option value="My Ideas">My Ideas</option>
+                @auth
+                    <option value="My Ideas">My Ideas</option>
+                @endauth
             </select>
         </div>
         <div x-data="{ inputLenth: 0 }" class="w-full sm:w-1/2 relative flex items-center">
