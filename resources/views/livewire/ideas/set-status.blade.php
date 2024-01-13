@@ -39,13 +39,13 @@
                     </svg>
                     <span>Attach</span>
                 </button>
-                <button type="submit" class="py-2 px-6 bg-blue text-white rounded-xl"
+                <button type="submit" class="py-2 px-6 bg-blue text-white rounded-xl disabled:opacity-60"
                     x-init="$wire.on('status-updated', () => {
                         open = false
                     })">Update</button>
             </div>
             <div class="flex items-center">
-                <input type="checkbox" name="notify_users" id="notify_users"
+                <input wire:model="notifyVotedUsers" type="checkbox" name="notify_users" id="notify_users"
                     class="bg-gray-200 border-none focus:ring-0 rounded">
                 <label for="notify_users" class="text-gray-900 ml-1">Notify All voters</label>
             </div>
