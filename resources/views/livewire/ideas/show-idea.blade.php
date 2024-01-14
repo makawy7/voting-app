@@ -44,36 +44,42 @@
                             ])>Vote</button>
                         </div>
                         <x-ideas.status-label :status="$idea->status->name" />
-                        <button x-data="{ open: false }" @click="open = !open"
-                            class="relative bg-gray-100 hover:bg-gray-200 rounded-full border h-7 px-3 transition ease-in duration-150">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor"
-                                class="bi bi-three-dots" viewBox="0 0 16 16">
-                                <path
-                                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                            </svg>
+                        <div x-data="{ open: false }" class="relative">
+                            <button @click="open = !open"
+                                class="relative bg-gray-100 hover:bg-gray-200 rounded-full border h-7 px-3 transition ease-in duration-150">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                                    fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                                </svg>
 
+
+                            </button>
                             <ul x-show="open" x-transition x-cloak @click.away="open = false"
-                                class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
-                                <li>
-                                    <a href=""
-                                        class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                        Mark as Spam
-                                    </a>
+                                class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7  font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
+                                <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                    <button @click="$dispatch('open-edit-modal'); open = !open">
+                                        Edit Idea
+                                    </button>
                                 </li>
-                                <li>
-                                    <a href=""
-                                        class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                    <button @click="open = !open">
+                                        Mark as Spam
+                                    </button>
+                                </li>
+                                <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                    <button @click="open = !open">
                                         Delete Post
-                                    </a>
+                                    </button>
                                 </li>
 
                             </ul>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> <!-- end of idea container -->
     <div class="mt-4 sm:ml-6 flex justify-center sm:justify-between">
         <div class="flex items-center space-x-1 sm:space-x-3">
             <div x-data="{ open: false }" class="relative">
@@ -275,5 +281,5 @@
             </div>
         </div>
     </div><!-- end of comments container -->
-
+    <livewire:ideas.edit-idea />
 </div>

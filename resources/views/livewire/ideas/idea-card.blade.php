@@ -1,17 +1,13 @@
 <div class="idea-container hover:shadow-lg transition ease-in duration-150 bg-white px-4 sm:px-0 rounded-xl flex">
     <div class="hidden sm:block px-5 py-8 border-r border-gray-100">
         <div class="text-center">
-            <h3 @class([
-                'text-2xl font-semibold',
-                'text-blue' => $votedByUser,
-            ])>{{ $voteCount }}</h3>
+            <h3 @class(['text-2xl font-semibold', 'text-blue' => $votedByUser])>{{ $voteCount }}</h3>
             <p class="text-gray-500">Votes</p>
         </div>
         <div class="mt-8">
             <button wire:click="vote" type="button" @class([
                 'border px-4 py-3 w-20 rounded-xl text-xxs leading-4 font-bold uppercase transition ease-in duration-150 ',
-                'bg-blue border-blue hover:border-blue-900 text-white' =>
-                    $votedByUser,
+                'bg-blue border-blue hover:border-blue-900 text-white' => $votedByUser,
                 'bg-gray-200 border-gray-200 hover:border-gray-400' => !$votedByUser,
             ])>
 
@@ -53,31 +49,7 @@
                         ])>Vote</button>
                     </div>
                     <x-ideas.status-label :status="$idea->status->name" />
-                    <button x-data="{ open: false }" @click="open = !open"
-                        class="relative bg-gray-100 hover:bg-gray-200 rounded-full border h-7 px-3 transition ease-in duration-150">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor"
-                            class="bi bi-three-dots" viewBox="0 0 16 16">
-                            <path
-                                d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                        </svg>
 
-                        <ul x-show="open" @click.away="open = false" x-transition x-cloak
-                            class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 text-left font-semibold w-44 py-3 shadow-lg rounded-xl bg-white">
-                            <li>
-                                <a href=""
-                                    class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                    Mark as Spam
-                                </a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                    Delete Post
-                                </a>
-                            </li>
-
-                        </ul>
-                    </button>
                 </div>
             </div>
         </div>

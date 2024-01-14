@@ -30,8 +30,9 @@
     </header>
 
     <main class="container max-w-custom mx-auto">
-        <div class="flex flex-col items-center sm:items-stretch sm:flex-row xl:-translate-x-37.5">
-            <div class="w-70 hidden lg:block sm:mr-5 sm:mt-16">
+        {{-- xl:-translate-x-37.5 --}}
+        <div class="flex flex-col items-center sm:items-stretch sm:flex-row">
+            <div class="min-w-70 w-70 hidden lg:block sm:mr-5 sm:mt-16">
                 <div class="border border-blue rounded-xl text-center sticky top-8 py-4 px-3 pt-6 bg-white">
                     <h3 class="text-xl font-semibold">Add an idea</h3>
                     <p class="mt-1 font-medium px-4">
@@ -58,12 +59,14 @@
                     @endauth
                 </div>
             </div>
-            <div class="w-full px-2 sm:px-0 sm:w-175 mx-auto">
+            <div class="w-full px-2 sm:px-0 lg:mr-70">
                 <livewire:ideas.status-filters />
                 <div class="mt-4 sm:mt-8">
                     {{ $slot }}
                 </div>
             </div>
+            {{-- <div class="min-w-70 hidden lg:block sm:mr-5 sm:mt-16">
+            </div> --}}
         </div>
 
     </main>
