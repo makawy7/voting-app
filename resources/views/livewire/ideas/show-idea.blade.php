@@ -34,7 +34,7 @@
                                 <span @class([
                                     'block text-center font-bold leading-none',
                                     'text-blue' => $votedByUser,
-                                ])>{{ $idea->votes()->count() }}</span>
+                                ])>{{ $votesCount }}</span>
                                 <span class="text-xs font-semibold leading-none text-gray-500">Votes</span>
                             </div>
                             <button wire:click="vote" type="button" @class([
@@ -57,11 +57,13 @@
                             </button>
                             <ul x-show="open" x-transition x-cloak @click.away="open = false"
                                 class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7  font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
-                                <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                    <button @click="$dispatch('open-edit-modal'); open = !open">
-                                        Edit Idea
-                                    </button>
-                                </li>
+                                @can('update', $idea)
+                                    <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                        <button @click="$dispatch('open-edit-modal'); open = !open">
+                                            Edit Idea
+                                        </button>
+                                    </li>
+                                @endcan
                                 <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
                                     <button @click="open = !open">
                                         Mark as Spam
@@ -114,7 +116,7 @@
                     'text-xl font-semibold leading-none',
                     'text-blue' => $votedByUser,
                 ])>
-                    {{ $idea->votes()->count() }}</h3>
+                    {{ $votesCount }}</h3>
                 <p class="text-gray-700 font-semibold mt-1 text-xs leading-none">Votes</p>
             </div>
             <button type="button" wire:click="vote" @class([
@@ -281,5 +283,5 @@
             </div>
         </div>
     </div><!-- end of comments container -->
-    <livewire:ideas.edit-idea />
+    <livewire:ideas.edit-idea :$idea />
 </div>

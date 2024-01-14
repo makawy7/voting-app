@@ -1,5 +1,5 @@
 <div x-data="{ open: false }" x-cloak @open-edit-modal.window="open = true" @keydown.escape.window="open = false"
-    class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    x-on:idea-updated="open = false" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <!--
       Background backdrop, show/hide based on modal state.
   
@@ -25,7 +25,7 @@
             To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         -->
             <div @click.away="open = false"
-                class="relative transform overflow-hidden rounded-t-xl bg-white transition-all sm:w-full sm:max-w-lg px-6 pt-2 pb-6">
+                class="relative transform overflow-hidden rounded-t-xl bg-white transition-all sm:w-full sm:max-w-xl px-6 pt-2 pb-6">
                 <div @click="open = false"
                     class="absolute right-2 top-2 p-2 hover:bg-gray-300 rounded-lg cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -34,7 +34,7 @@
                             clip-rule="evenodd" />
                     </svg>
                 </div>
-                <form wire:submit="create" class="space-y-4 mt-6">
+                <form wire:submit="updateIdea" class="space-y-4 mt-6">
                     <div class="pb-2 text-center">
                         <h3 class="text-xl font-semibold mb-1">Edit Idea</h3>
                         <p>You have one hour to edit your idea from the time you created it.</p>
@@ -54,8 +54,9 @@
                     <div>
                         <select wire:model.blur="category"
                             class="bg-gray-100 w-full border-none placeholder-gray-900 rounded-xl" name="category">
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->id }}" {{ $cat->id !== $category ?: 'selected' }}>
+                                    {{ $cat->name }}</option>
                             @endforeach
                         </select>
                         @error('category')
@@ -85,7 +86,7 @@
                             </svg>
                             <span>Attach</span>
                         </button>
-                        <button class="py-2 flex-1 bg-blue text-white rounded-xl font-semibold">Submit</button>
+                        <button class="py-2 flex-1 bg-blue text-white rounded-xl font-semibold">Update</button>
                     </div>
                     {{-- <div x-cloak x-show="$wire.successMessage"
                         x-effect="if($wire.successMessage) setTimeout(()=>{$wire.successMessage = false},2000)"

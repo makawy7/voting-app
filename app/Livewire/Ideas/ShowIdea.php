@@ -13,11 +13,12 @@ class ShowIdea extends Component
     public Idea $idea;
     public $votedByUser;
     public $backUrl;
+    public $votesCount;
     public function mount(Idea $idea)
     {
         $this->idea = $idea;
         $this->votedByUser = $idea->hasVoted(auth()->user());
-
+        $this->votesCount = $idea->votes()->count();
         $this->backUrl = url()->previous() !== url()->full()
             ? url()->previous() : route('idea.index');
     }
@@ -27,7 +28,11 @@ class ShowIdea extends Component
     {
         $this->idea->refresh();
     }
-
+    #[On('idea-updated')]
+    public function ideaGotUpdated()
+    {
+        $this->idea->refresh();
+    }
     public function vote()
     {
         if (!auth()->check()) {
@@ -36,9 +41,11 @@ class ShowIdea extends Component
 
         if ($this->votedByUser) {
             $this->idea->unVote(auth()->user());
+            $this->votesCount--;
             $this->votedByUser = false;
         } else {
             $this->idea->vote(auth()->user());
+            $this->votesCount++;
             $this->votedByUser = true;
         }
     }
