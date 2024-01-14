@@ -1,5 +1,5 @@
-<div x-data="{ open: false }" x-cloak @open-edit-modal.window="open = true" x-show="open" class="relative z-10" aria-labelledby="modal-title"
-    role="dialog" aria-modal="true">
+<div x-data="{ open: false }" x-cloak @open-edit-modal.window="open = true" @keydown.escape.window="open = false"
+    class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <!--
       Background backdrop, show/hide based on modal state.
   
@@ -10,9 +10,9 @@
         From: "opacity-100"
         To: "opacity-0"
     -->
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    <div x-transition.opacity x-show="open" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-    <div class="fixed inset-0 z-10 overflow-y-autp">
+    <div x-transition.origin.bottom.duration.500ms x-show="open" class="fixed inset-0 z-10 overflow-y-autp">
         <div class="flex min-h-full items-end justify-center">
             <!--
           Modal panel, show/hide based on modal state.
