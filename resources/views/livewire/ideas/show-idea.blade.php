@@ -69,12 +69,13 @@
                                         Mark as Spam
                                     </button>
                                 </li>
-                                <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                    <button @click="open = !open">
-                                        Delete Post
-                                    </button>
-                                </li>
-
+                                @can('delete', $idea)
+                                    <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                        <button @click="open = !open; $dispatch('open-delete-modal')">
+                                            Delete Idea
+                                        </button>
+                                    </li>
+                                @endcan
                             </ul>
                         </div>
                     </div>
@@ -284,4 +285,5 @@
         </div>
     </div><!-- end of comments container -->
     <livewire:ideas.edit-idea :$idea />
+    <livewire:ideas.delete-idea :$idea />
 </div>

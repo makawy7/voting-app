@@ -1,29 +1,11 @@
 <div x-data="{ open: false }" x-cloak @open-edit-modal.window="open = true" @keydown.escape.window="open = false"
-    x-on:idea-updated="open = false" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <!--
-      Background backdrop, show/hide based on modal state.
-  
-      Entering: "ease-out duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
+    @idea-updated="open = false" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
     <div x-transition.opacity x-show="open" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
     <div x-transition.origin.bottom.duration.500ms x-show="open" class="fixed inset-0 z-10 overflow-y-autp">
+        
         <div class="flex min-h-full items-end justify-center">
-            <!--
-          Modal panel, show/hide based on modal state.
-  
-          Entering: "ease-out duration-300"
-            From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            To: "opacity-100 translate-y-0 sm:scale-100"
-          Leaving: "ease-in duration-200"
-            From: "opacity-100 translate-y-0 sm:scale-100"
-            To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        -->
             <div @click.away="open = false"
                 class="relative transform overflow-hidden rounded-t-xl bg-white transition-all sm:w-full sm:max-w-xl px-6 pt-2 pb-6">
                 <div @click="open = false"
@@ -86,7 +68,7 @@
                             </svg>
                             <span>Attach</span>
                         </button>
-                        <button class="py-2 flex-1 bg-blue text-white rounded-xl font-semibold">Update</button>
+                        <button type="submit" class="py-2 flex-1 bg-blue text-white rounded-xl font-semibold disabled:opacity-50">Update</button>
                     </div>
                     {{-- <div x-cloak x-show="$wire.successMessage"
                         x-effect="if($wire.successMessage) setTimeout(()=>{$wire.successMessage = false},2000)"
