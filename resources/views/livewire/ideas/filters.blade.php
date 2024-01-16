@@ -18,6 +18,9 @@
                 @auth
                     <option value="My Ideas">My Ideas</option>
                 @endauth
+                @admin
+                    <option value="Spam">Most Spam</option>
+                @endadmin
             </select>
         </div>
         <div x-data="{ inputLenth: 0 }" class="w-full sm:w-1/2 relative flex items-center">

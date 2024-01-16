@@ -16,6 +16,11 @@
                 <h4 class="text-xl font-semibold mt-2 sm:mt-0">
                     {{ $idea->title }}
                 </h4>
+                @admin
+                    <p class="text-red text-xs font-semibold">
+                        {{ $idea->spam_reports !== 0 ? 'Spam Reports: ' . $idea->spam_reports : '' }}
+                    </p>
+                @endadmin
                 <p class="mt-3 text-gray-600">{{ $idea->description }}
                 </p>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
@@ -44,40 +49,53 @@
                             ])>Vote</button>
                         </div>
                         <x-ideas.status-label :status="$idea->status->name" />
-                        <div x-data="{ open: false }" class="relative">
-                            <button @click="open = !open"
-                                class="relative bg-gray-100 hover:bg-gray-200 rounded-full border h-7 px-3 transition ease-in duration-150">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
-                                    fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                                </svg>
-
-
-                            </button>
-                            <ul x-show="open" x-transition x-cloak @click.away="open = false"
-                                class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7  font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
-                                @can('update', $idea)
+                        @auth
+                            <div x-data="{ open: false }" class="relative">
+                                <button @click="open = !open"
+                                    class="relative bg-gray-100 hover:bg-gray-200 rounded-full border h-7 px-3 transition ease-in duration-150">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                                        fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                                    </svg>
+                                </button>
+                                <ul x-show="open" x-transition x-cloak @click.away="open = false"
+                                    class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
+                                    @can('update', $idea)
+                                        <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                            <button class="w-full text-left"
+                                                @click="$dispatch('open-edit-modal'); open = !open">
+                                                Edit Idea
+                                            </button>
+                                        </li>
+                                    @endcan
                                     <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                        <button @click="$dispatch('open-edit-modal'); open = !open">
-                                            Edit Idea
+                                        <button class="w-full text-left"
+                                            @click="$dispatch('open-spam-modal'); open = !open">
+                                            Report Spam
                                         </button>
                                     </li>
-                                @endcan
-                                <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                    <button @click="open = !open">
-                                        Mark as Spam
-                                    </button>
-                                </li>
-                                @can('delete', $idea)
-                                    <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                                        <button @click="open = !open; $dispatch('open-delete-modal')">
-                                            Delete Idea
-                                        </button>
-                                    </li>
-                                @endcan
-                            </ul>
-                        </div>
+                                    @can('delete', $idea)
+                                        <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                            <button class="w-full text-left"
+                                                @click="open = !open; $dispatch('open-delete-modal')">
+                                                Delete Idea
+                                            </button>
+                                        </li>
+                                    @endcan
+                                    @admin
+                                        @if ($idea->spam_reports > 0)
+                                            <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                                                <button class="w-full text-left"
+                                                    @click="open = !open; $dispatch('open-notspam-modal')">
+                                                    Not Spam
+                                                </button>
+                                            </li>
+                                        @endif
+                                    @endadmin
+                                </ul>
+                            </div>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -286,4 +304,6 @@
     </div><!-- end of comments container -->
     <livewire:ideas.edit-idea :$idea />
     <livewire:ideas.delete-idea :$idea />
+    <livewire:ideas.report-spam :$idea />
+    <livewire:ideas.mark-not-spam :$idea />
 </div>

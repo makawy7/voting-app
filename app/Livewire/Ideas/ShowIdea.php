@@ -24,15 +24,14 @@ class ShowIdea extends Component
     }
 
     #[On('status-updated')]
-    public function statusGotUpdated()
-    {
-        $this->idea->refresh();
-    }
     #[On('idea-updated')]
-    public function ideaGotUpdated()
+    #[On('idea-spam-reported')]
+    #[On('idea-marked-notspam')]
+    public function resetIdea()
     {
         $this->idea->refresh();
     }
+
     public function vote()
     {
         if (!auth()->check()) {

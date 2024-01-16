@@ -23,6 +23,11 @@
                 <a wire:navigate class="hover:underline"
                     href="{{ route('idea.show', $idea->slug) }}">{{ $idea->title }}</a>
             </h4>
+            @admin
+                <p class="text-red text-xs font-semibold">
+                    {{ $idea->spam_reports !== 0 ? 'Spam Reports: ' . $idea->spam_reports : '' }}
+                </p>
+            @endadmin
             <p class="mt-3 text-gray-600 line-clamp-3 max-w-sm sm:max-w-none">{{ $idea->description }}
             </p>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
