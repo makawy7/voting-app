@@ -43,13 +43,4 @@
         </button>
         <button class="py-2 flex-1 bg-blue text-white rounded-xl font-semibold">Submit</button>
     </div>
-    <div x-cloak x-show="$wire.successMessage"
-        x-effect="if($wire.successMessage) setTimeout(()=>{$wire.successMessage = false},2000)" x-transition
-        class="flex rounded-xl justify-center font-semibold text-green-700">
-        <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-            stroke="currentColor" class="w-5 h-5 mr-1">
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <span>Idea added successfully</span>
-    </div>
 </form>

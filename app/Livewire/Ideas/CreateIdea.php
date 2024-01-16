@@ -20,8 +20,12 @@ class CreateIdea extends Component
     #[Validate('required|exists:categories,id')]
     public $category = 1;
 
-    public $successMessage = false;
+    public $currentUrl;
 
+    public function mount()
+    {
+        $this->currentUrl = url()->current();
+    }
     public function create()
     {
         if (auth()->check()) {
@@ -34,9 +38,13 @@ class CreateIdea extends Component
                 'description' => $this->description,
             ]);
 
-            $this->successMessage = true;
-            $this->dispatch('idea-created');
-            $this->resetExcept('successMessage');
+            if ($this->currentUrl !== route('idea.index')) {
+                session()->flash('success', 'Idea Created Successfully');
+                $this->redirectRoute('idea.index', navigate: true);
+            } else {
+                $this->dispatch('idea-created');
+                $this->dispatch('success-message', message: 'Idea created successfully.');
+            }
         } else {
 
             abort(Response::HTTP_FORBIDDEN);

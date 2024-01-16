@@ -20,6 +20,7 @@ class MarkNotSpam extends Component
         $this->idea->save();
 
         $this->dispatch('idea-marked-notspam');
+        $this->dispatch('success-message', message: 'Idea marked as not spam.');
     }
     public function render()
     {

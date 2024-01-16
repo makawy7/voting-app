@@ -21,7 +21,7 @@
                         'text-red' => strtolower($status->name) === 'closed',
                     ]) type="radio"
                         id="{{ strtolower($status->name) }}" name="status" value="{{ $status->id }}"
-                        {{ $idea->status_id !== $status->id ?: 'checked' }} />
+                        {{ $idea->status_id === $status->id ? 'checked' : '' }} />
                     <label class="font-semibold"
                         for="{{ strtolower($status->name) }}">{{ ucwords($status->name) }}</label>
                 </div>

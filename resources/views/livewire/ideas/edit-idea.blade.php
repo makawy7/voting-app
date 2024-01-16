@@ -4,7 +4,7 @@
     <div x-transition.opacity x-show="open" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
     <div x-transition.origin.bottom.duration.500ms x-show="open" class="fixed inset-0 z-10 overflow-y-autp">
-        
+
         <div class="flex min-h-full items-end justify-center">
             <div @click.away="open = false"
                 class="relative transform overflow-hidden rounded-t-xl bg-white transition-all sm:w-full sm:max-w-xl px-6 pt-2 pb-6">
@@ -37,7 +37,7 @@
                         <select wire:model.blur="category"
                             class="bg-gray-100 w-full border-none placeholder-gray-900 rounded-xl" name="category">
                             @foreach ($categories as $cat)
-                                <option value="{{ $cat->id }}" {{ $cat->id !== $category ?: 'selected' }}>
+                                <option value="{{ $cat->id }}" {{ $cat->id === $category ? 'selected' : '' }}>
                                     {{ $cat->name }}</option>
                             @endforeach
                         </select>
@@ -68,7 +68,8 @@
                             </svg>
                             <span>Attach</span>
                         </button>
-                        <button type="submit" class="py-2 flex-1 bg-blue text-white rounded-xl font-semibold disabled:opacity-50">Update</button>
+                        <button type="submit"
+                            class="py-2 flex-1 bg-blue text-white rounded-xl font-semibold disabled:opacity-50">Update</button>
                     </div>
                     {{-- <div x-cloak x-show="$wire.successMessage"
                         x-effect="if($wire.successMessage) setTimeout(()=>{$wire.successMessage = false},2000)"

@@ -18,8 +18,8 @@ class DeleteIdea extends Component
         $this->authorize('delete', $this->idea);
         $this->idea->delete();
 
-        $this->dispatch('idea-deleted');
-        $this->redirect(route('idea.index'), navigate: true);
+        session()->flash('success', 'Idea deleted successfully.');
+        $this->redirectRoute('idea.index', navigate: true);
     }
     public function render()
     {

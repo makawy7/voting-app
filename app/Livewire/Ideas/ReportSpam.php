@@ -23,6 +23,7 @@ class ReportSpam extends Component
         $this->idea->save();
 
         $this->dispatch('idea-spam-reported');
+        $this->dispatch('success-message', message: 'Idea reported as spam.');
     }
     public function render()
     {

@@ -32,6 +32,7 @@ class SetStatus extends Component
         }
 
         $this->dispatch('status-updated');
+        $this->dispatch('success-message', message: 'Idea status updated.');
     }
 
     public function render()

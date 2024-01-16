@@ -157,7 +157,8 @@
                         <img class="w-14 h-14 rounded-xl" src="{{ $idea->user->avatar }}" alt="avatar">
                     </div>
                     <div class="ml-4 w-full">
-                        <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, illo.
+                        <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
+                            illo.
                         </p>
                         <div class="flex items-center justify-between mt-4">
                             <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
@@ -209,7 +210,8 @@
                         <h4 class="text-xl font-semibold">
                             <a wire:navigate class="hover:underline" href="/idea">A random title can go here</a>
                         </h4>
-                        <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
+                        <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Nisi,
                             illo.
                         </p>
                         <div class="flex items-center justify-between mt-4">
@@ -258,8 +260,10 @@
                     </div>
                     <div class="ml-4 w-full">
                         <p class=" text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            Voluptatibus eius animi nihil nam, molestias reprehenderit ut modi aspernatur at incidunt
-                            atque nemo cupiditate dolores. Cum aspernatur officia ipsam, ab iusto quidem labore error
+                            Voluptatibus eius animi nihil nam, molestias reprehenderit ut modi aspernatur at
+                            incidunt
+                            atque nemo cupiditate dolores. Cum aspernatur officia ipsam, ab iusto quidem labore
+                            error
                             debitis fugiat nulla obcaecati, ex veniam vitae.
                         </p>
                         <div class="flex items-center justify-between mt-4">
@@ -303,4 +307,5 @@
         </div>
     </div><!-- end of comments container -->
     <x-modals-container :$idea />
+
 </div>

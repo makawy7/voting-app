@@ -49,6 +49,7 @@ class EditIdea extends Component
         $this->idea->save();
 
         $this->dispatch('idea-updated');
+        $this->dispatch('success-message', message: 'Idea has been updated.');
     }
     public function render()
     {
