@@ -302,8 +302,5 @@
             </div>
         </div>
     </div><!-- end of comments container -->
-    <livewire:ideas.edit-idea :$idea />
-    <livewire:ideas.delete-idea :$idea />
-    <livewire:ideas.report-spam :$idea />
-    <livewire:ideas.mark-not-spam :$idea />
+    <x-modals-container :$idea />
 </div>
