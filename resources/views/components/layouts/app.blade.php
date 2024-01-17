@@ -59,7 +59,7 @@
                     @endauth
                 </div>
             </div>
-            <div class="w-full px-2 sm:px-0 lg:mr-70">
+            <div class="w-full px-2 sm:px-4 lg:px-0 lg:mr-70">
                 <livewire:ideas.status-filters />
                 <div class="mt-4 sm:mt-8">
                     {{ $slot }}

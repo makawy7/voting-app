@@ -18,7 +18,7 @@
         <a href="" class="flex-none sm:mx-0">
             <img class="w-14 h-14 rounded-xl" src="{{ $idea->user->avatar }}" alt="avatar">
         </a>
-        <div class="sm:mx-4 w-full">
+        <div class="sm:mx-4 w-full flex flex-col">
             <h4 class="text-xl font-semibold mt-2 sm:mt-0">
                 <a wire:navigate class="hover:underline"
                     href="{{ route('idea.show', $idea->slug) }}">{{ $idea->title }}</a>
@@ -28,9 +28,9 @@
                     {{ $idea->spam_reports !== 0 ? 'Spam Reports: ' . $idea->spam_reports : '' }}
                 </p>
             @endadmin
-            <p class="mt-3 text-gray-600 line-clamp-3 max-w-sm sm:max-w-none">{{ $idea->description }}
+            <p class="mt-3 mb-3 sm:mb-4 text-gray-600 line-clamp-3 max-w-sm sm:max-w-none">{{ $idea->description }}
             </p>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-auto">
                 <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
                     <div>{{ $idea->created_at->diffForHumans() }}</div>
                     <div>&bull;</div>

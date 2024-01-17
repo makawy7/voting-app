@@ -17,7 +17,7 @@ class StatusFilters extends Component
     public $statusCount;
     public function mount()
     {
-        $this->setStatusCount();
+        $this->statusCount = Status::getCount();
         if (Route::currentRouteName() !== 'idea.index') {
             $this->currentStatus = null;
         }
@@ -25,7 +25,7 @@ class StatusFilters extends Component
         $this->currentRouteName = Route::currentRouteName();
     }
     #[On('idea-created')]
-    public function setStatusCount()
+    public function resetStatusCount()
     {   
         $this->reset('currentStatus');
         $this->statusCount = Status::getCount();
