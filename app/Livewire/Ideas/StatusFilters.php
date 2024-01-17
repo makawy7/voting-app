@@ -26,7 +26,8 @@ class StatusFilters extends Component
     }
     #[On('idea-created')]
     public function setStatusCount()
-    {
+    {   
+        $this->reset('currentStatus');
         $this->statusCount = Status::getCount();
     }
     public function setStatus($status)

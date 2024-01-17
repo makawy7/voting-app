@@ -1,4 +1,5 @@
 <div>
+    <x-loading-spinner />
     <a wire:navigate href="{{ $backUrl }}" class="font-semibold hover:underline flex items-center">
         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd"

@@ -59,6 +59,12 @@ class Home extends Component
     }
 
     #[On('idea-created')]
+    public function foo()
+    {
+        $this->reset('category', 'search', 'filter', 'status');
+        $this->resetPage();
+    }
+
     public function render()
     {
         $statuses = Status::all()->pluck('id', 'name');

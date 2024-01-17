@@ -72,6 +72,7 @@
     </main>
 
     <x-messages.success-message />
+
 </body>
 
 </html>

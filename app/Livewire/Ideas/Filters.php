@@ -4,6 +4,7 @@ namespace App\Livewire\Ideas;
 
 use Livewire\Component;
 use App\Models\Category;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 
 class Filters extends Component
@@ -28,6 +29,13 @@ class Filters extends Component
     {
         $this->dispatch('search-filter', $this->search);
     }
+
+    #[On('idea-created')]
+    public function resetFilters()
+    {
+        $this->reset('currentCategory', 'filter', 'search');
+    }
+
     public function render()
     {
         return view('livewire.ideas.filters', ['categories' => Category::all()]);
