@@ -87,7 +87,7 @@ class Home extends Component
                 ->addSelect(['voted_by_user' => Vote::select('id')
                     ->where('user_id', auth()->id())
                     ->whereColumn('idea_id', 'ideas.id')])
-                ->withCount('votes')
+                ->withCount('votes', 'comments')
                 ->orderBy('id', 'desc')
                 ->paginate(Idea::PAGINATION_COUNT),
         ]);
