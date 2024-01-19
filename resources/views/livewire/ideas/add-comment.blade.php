@@ -5,6 +5,14 @@
         let lastElement = null
         let hookCompleted = false
         Livewire.hook('morph.added', ({ el }) => {
+            if(hookCompleted){
+                return;
+            }
+            //occures only when there's no comments
+            if(el.firstElementChild.id === `comment_${commentId}`){
+                lastElement = el.firstElementChild;
+                hookCompleted = true;
+            }
             if(el.id === `comment_${commentId}`){
                 lastElement = el;
                 hookCompleted = true;
