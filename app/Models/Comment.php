@@ -11,6 +11,7 @@ class Comment extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $perPage = 8;
 
     protected static function boot()
     {

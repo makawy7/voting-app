@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId("category_id")->constrained();
             $table->foreignId("status_id")->constrained();
             $table->string("title");
-            $table->string("slug")->nullable();
+            $table->string("slug")->nullable()->index();
             $table->text("description");
             $table->integer("spam_reports")->default(0);
             $table->timestamps();

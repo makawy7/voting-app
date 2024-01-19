@@ -1,12 +1,28 @@
-<div x-data="{ open: false }" @comment-added.window="open = false" x-init="() => {
-    Livewire.hook('morph.added', ({ el }) => {
-        if (el.classList.contains('comment-container')) {
-            el.scrollIntoView({ behavior: 'smooth' })
-            el.classList.add('border', 'border-gray-600')
-            setTimeout(() => { el.classList.remove('border', 'border-gray-600') }, 5000)
-        }
-    })
-}" class="relative">
+<div x-data="{ open: false }"
+    @comment-added.window="({detail})=>{
+        open = false;
+        const commentId = detail.commentId;
+        let lastElement = null
+        let hookCompleted = false
+        Livewire.hook('morph.added', ({ el }) => {
+            if(el.id === `comment_${commentId}`){
+                lastElement = el;
+                hookCompleted = true;
+            }
+        })
+        const elementInterval = setInterval(()=>{
+            if(hookCompleted && lastElement){
+                lastElement.scrollIntoView({ behavior: 'smooth' });
+                lastElement.classList.add('border', 'border-gray-600');
+                setTimeout(() => { 
+                    lastElement.classList.remove('border', 'border-gray-600'); 
+                    lastElement = null; 
+                }, 5000);
+                clearInterval(elementInterval)
+            }
+        },100)
+    }"
+    class="relative">
     <button @click="open = !open; if(open){$nextTick(()=>$refs.comment.focus())}"
         class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
     <form wire:submit="addComment" x-show="open" x-cloak @click.away="open = false"
@@ -23,7 +39,8 @@
             @enderror
         </div>
         <div class="flex items-center space-x-2">
-            <button type="submit" class="py-2 px-8 bg-blue shadow-sm shadow-blue text-white rounded-xl">Post
+            <button type="submit"
+                class="py-2 px-8 bg-blue shadow-sm shadow-blue text-white rounded-xl disabled:opacity-50">Post
                 Comment</button>
             <button type="submit" class="py-2 px-4 flex w-fit items-center gap-0.5 bg-gray-200 rounded-xl"> <svg
                     xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 -rotate-45 text-gray-600" fill="none"

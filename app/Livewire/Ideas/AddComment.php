@@ -9,6 +9,7 @@ use Livewire\Component;
 class AddComment extends Component
 {
     public Idea $idea;
+
     #[Validate('required|min:3')]
     public $comment;
     public function mount(Idea $idea)
@@ -21,11 +22,11 @@ class AddComment extends Component
             return $this->redirectRoute('login', navigate: true);
         }
         $this->validate();
-        $this->idea->comments()->create([
+        $comment = $this->idea->comments()->create([
             'body' => $this->comment
         ]);
-        
-        $this->dispatch('comment-added');
+        $this->reset('comment');
+        $this->dispatch('comment-added', commentId: $comment->id);
         $this->dispatch('success-message', message: 'Comment was added.');
     }
     public function render()

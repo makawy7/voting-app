@@ -42,6 +42,7 @@ class CreateIdea extends Component
                 session()->flash('success', 'Idea Created Successfully');
                 $this->redirectRoute('idea.index', navigate: true);
             } else {
+                $this->reset('title', 'description', 'category');
                 $this->dispatch('idea-created');
                 $this->dispatch('success-message', message: 'Idea created successfully.');
             }
