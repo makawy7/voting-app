@@ -59,7 +59,7 @@ class Home extends Component
     }
 
     #[On('idea-created')]
-    public function foo()
+    public function resetAllFilters()
     {
         $this->reset('category', 'search', 'filter', 'status');
         $this->resetPage();

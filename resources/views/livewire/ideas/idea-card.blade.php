@@ -36,7 +36,7 @@
                     <div>&bull;</div>
                     <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
-                    <a class="text-gray-900" href="">{{ $idea->comments_count }} Comments</a>
+                    <a class="text-gray-900" href="">{{ $commentsCount }} Comments</a>
                 </div>
                 <div class="flex items-center justify-end mt-3 sm:mt-0 space-x-2">
                     <div class="flex sm:hidden mr-auto bg-gray-100 rounded-xl">

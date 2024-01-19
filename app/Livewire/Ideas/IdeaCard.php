@@ -12,12 +12,14 @@ class IdeaCard extends Component
     public $idea;
     public $votedByUser;
     public $voteCount;
+    public $commentsCount;
 
     public function mount(Idea $idea)
     {
         $this->idea = $idea;
         $this->votedByUser = $idea->voted_by_user;
         $this->voteCount = $idea->votes_count;
+        $this->commentsCount = $idea->comments_count;
     }
     public function vote()
     {

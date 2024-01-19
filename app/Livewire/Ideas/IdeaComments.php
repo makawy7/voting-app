@@ -3,6 +3,7 @@
 namespace App\Livewire\Ideas;
 
 use App\Models\Idea;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class IdeaComments extends Component
@@ -13,6 +14,8 @@ class IdeaComments extends Component
     {
         $this->idea = $idea;
     }
+
+    #[On('comment-added')]
     public function render()
     {
         return view('livewire.ideas.idea-comments', [
