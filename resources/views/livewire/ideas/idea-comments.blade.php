@@ -5,7 +5,7 @@
             <div class="pt-6">
                 @foreach ($comments as $comment)
                     <div @class([
-                        "relative comment-container hover:shadow-md transition ease-in duration-150 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200",
+                        "relative comment-container hover:shadow-md transition ease-in-out duration-500 bg-white rounded-xl mt-3 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:top-1/2 sm:before:w-10 sm:before:h-0.75 sm:before:bg-gray-200",
                         "sm:after:content-[''] sm:after:absolute sm:after:-left-10 sm:after:w-0.75 sm:after:top-1/2 sm:after:translate-y-0.75 sm:after:h-1/2 sm:after:bg-background" =>
                             $loop->last,
                     ])>

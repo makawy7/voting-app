@@ -27,11 +27,12 @@ class ShowIdea extends Component
     #[On('idea-updated')]
     #[On('idea-spam-reported')]
     #[On('idea-marked-notspam')]
+    #[On('comment-added')]
     public function resetIdea()
     {
         $this->idea->refresh();
-    }
 
+    }
     public function vote()
     {
         if (!auth()->check()) {

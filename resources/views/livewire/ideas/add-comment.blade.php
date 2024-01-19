@@ -1,16 +1,23 @@
-<div x-data="{ open: false }"
-    @comment-added.window="open=false; $nextTick(() => { window.scrollTo(0, document.body.scrollHeight) });"
-    class="relative">
-    <button @click="open = !open" class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
+<div x-data="{ open: false }" @comment-added.window="open = false" x-init="() => {
+    Livewire.hook('morph.added', ({ el }) => {
+        if (el.classList.contains('comment-container')) {
+            el.scrollIntoView({ behavior: 'smooth' })
+            el.classList.add('border', 'border-gray-600')
+            setTimeout(() => { el.classList.remove('border', 'border-gray-600') }, 5000)
+        }
+    })
+}" class="relative">
+    <button @click="open = !open; if(open){$nextTick(()=>$refs.comment.focus())}"
+        class="h-10 px-8 relative bg-blue text-white rounded-xl font-semibold">Reply</button>
     <form wire:submit="addComment" x-show="open" x-cloak @click.away="open = false"
         class="absolute -translate-x-10 sm:-translate-x-0 mt-2 text-gray-900 text-left font-semibold w-80 sm:w-96 z-10 px-3 py-4 space-y-2 shadow-xl rounded-xl bg-white">
         <div>
-            <textarea wire:model.blur="comment" @class([
+            <textarea wire:model.blur="comment" x-ref="comment" @class([
                 'bg-gray-100 px-4 py-2 rounded-xl w-full text-xs placeholder-gray-500',
                 'border-none ' => $errors->missing('comment'),
                 'border-2 border-red ' => $errors->has('comment'),
-            ]) name="comment" id="comment" rows="5"
-                placeholder="Go ahead, don't be shy. Share your thoughts"></textarea>
+            ]) name="comment" id="comment"
+                rows="5" placeholder="Go ahead, don't be shy. Share your thoughts"></textarea>
             @error('comment')
                 <p class="text-xs font-semibold text-red pl-2 text-start peer-focus:hidden">{{ $message }}</p>
             @enderror

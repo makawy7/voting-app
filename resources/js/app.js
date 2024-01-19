@@ -1,11 +1,7 @@
 import "./bootstrap";
 
-// window.addEventListener("popstate", () => {
-    // Livewire.dispatch("back-button");
-    // Additional logic, if needed
-    // Livewire.dispatch('back-button')
-// });
-
-// Livewire.on("back-button", () => {
-//     alert("dddddddddddd");
+// document.addEventListener("livewire:init", () => {
+//     Livewire.hook("morph.added", ({ el }) => {
+//         console.log(el)
+//     });
 // });
