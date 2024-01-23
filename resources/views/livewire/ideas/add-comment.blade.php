@@ -5,10 +5,11 @@
         let lastElement = null
         let hookCompleted = false
         Livewire.hook('morph.added', ({ el }) => {
+            console.log(el)
             if(hookCompleted){
                 return;
             }
-            //occures only when there's no comments
+            //occures only when there're no comments
             if(el.firstElementChild.id === `comment_${commentId}`){
                 lastElement = el.firstElementChild;
                 hookCompleted = true;
@@ -21,9 +22,9 @@
         const elementInterval = setInterval(()=>{
             if(hookCompleted && lastElement){
                 lastElement.scrollIntoView({ behavior: 'smooth' });
-                lastElement.classList.add('border', 'border-gray-600');
+                lastElement.classList.add('shadow-lg','shadow-blue-200');
                 setTimeout(() => { 
-                    lastElement.classList.remove('border', 'border-gray-600'); 
+                    lastElement.classList.remove('shadow-lg','shadow-blue-200'); 
                     lastElement = null; 
                 }, 5000);
                 clearInterval(elementInterval)
