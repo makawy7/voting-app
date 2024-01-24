@@ -1,4 +1,5 @@
 <div class="flex px-5 py-6">
+    <x-loading-spinner />
     <div href="" class="flex-none self-start">
         <img class="w-14 h-14 rounded-xl" src="{{ $comment->user->avatar }}" alt="avatar">
     </div>
@@ -29,17 +30,22 @@
                 </button>
                 <ul x-show="open" x-transition x-cloak @click.away="open = false"
                     class="absolute right-1/4 sm:right-auto mt-1 sm:ml-7 text-left font-semibold z-10 w-44 py-3 shadow-lg rounded-xl bg-white">
-                    <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                        <button @click="$dispatch('open-editcomment-modal',  { comment: {{ $comment->id }} })"
-                            class="w-full text-left">
-                            Edit Comment
-                        </button>
-                    </li>
-                    <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
-                        <button class="w-full text-left">
-                            Delete Comment
-                        </button>
-                    </li>
+                    @can('update', $comment)
+                        <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                            <button @click="$dispatch('open-editcomment-modal',  { comment: {{ $comment->id }} })"
+                                class="w-full text-left">
+                                Edit Comment
+                            </button>
+                        </li>
+                    @endcan
+                    @can('delete', $comment)
+                        <li @click="$dispatch('open-deletecomment-modal', {comment: {{ $comment->id }}})"
+                            class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                            <button class="w-full text-left">
+                                Delete Comment
+                            </button>
+                        </li>
+                    @endcan
 
                 </ul>
             </div>

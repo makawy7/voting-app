@@ -24,11 +24,12 @@ class EditComment extends Component
 
     public function updateComment()
     {
+        $this->authorize('update', $this->comment);
         $this->validate();
         $this->comment->body = $this->commentBody;
         $this->comment->save();
         $this->commentUpdated = true;
-        
+
         $this->dispatch('comment-updated.' . $this->comment->id);
         $this->dispatch('success-message', message: 'Comment updated successfully.');
     }

@@ -1,6 +1,7 @@
 <div>
     <x-loading-spinner />
     <livewire:ideas.edit-comment />
+    <livewire:ideas.delete-comment />
     @if ($comments->IsNotEmpty())
         <div
             class="relative comments-container space-y-6 sm:ml-22 pt-2 mb-8 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:w-0.75 sm:before:h-full sm:before:bg-gray-200">

@@ -24,6 +24,16 @@ class IdeaComments extends Component
         $this->gotoPage($this->idea->comments()->paginate()->lastPage());
     }
 
+    #[On('comment-deleted')]
+    public function commentDeleted()
+    {
+        $this->idea->refresh();
+        $lastPage = $this->idea->comments()->paginate()->lastPage();
+        if ((int) $this->getPage() > $lastPage) {
+            $this->gotoPage($lastPage);
+        }
+    }
+
     public function render()
     {
         return view('livewire.ideas.idea-comments', [
