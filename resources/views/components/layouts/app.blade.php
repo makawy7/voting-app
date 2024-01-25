@@ -22,6 +22,9 @@
             @if (Route::has('login'))
                 <livewire:welcome.navigation />
             @endif
+            @auth
+                <livewire:notifications />
+            @endauth
             <a href="#">
                 <img class="w-88 h-10 rounded-full" src="https://gravatar.com/avatar/00000000000000000000000000000?d=mp"
                     alt="avatar">

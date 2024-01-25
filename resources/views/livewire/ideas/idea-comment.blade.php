@@ -46,6 +46,11 @@
                             </button>
                         </li>
                     @endcan
+                    <li class="hover:bg-gray-100 block px-5 py-3 transition ease-in duration-150">
+                        <button class="w-full text-left">
+                            Report
+                        </button>
+                    </li>
 
                 </ul>
             </div>
