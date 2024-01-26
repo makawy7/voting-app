@@ -10,6 +10,7 @@ class Notifications extends Component
 {
     const NOTIFICATION_THRESHOULD = 20;
     public $notificationFirstOpen = false;
+    public $notifications;
 
     public $notificationsCount;
     public function mount()
@@ -24,20 +25,26 @@ class Notifications extends Component
     public function openNotification()
     {
         $this->notificationFirstOpen = true;
+        $this->getNotifications();
+    }
+
+    public function markAllAsRead()
+    {
+        auth()->user()->unreadNotifications->markAsRead();
+        $this->getCount();
     }
 
     public function goToNotification(DatabaseNotification $notification)
     {
-        // $notification->markAsRead();
+        $notification->markAsRead();
 
         $notificationLink = route('idea.show', $notification->data['idea_slug']) . '?comment=' . $notification->data['comment_id'];
         $this->redirect($notificationLink, navigate: true);
     }
 
-    #[Computed()]
-    public function notifications()
+    public function getNotifications()
     {
-        return auth()->user()
+        $this->notifications =  auth()->user()
             ->unreadNotifications()
             ->latest()
             ->take(self::NOTIFICATION_THRESHOULD)

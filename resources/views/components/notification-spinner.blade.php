@@ -1,4 +1,4 @@
-<div wire:loading.class="flex" wire:loading.class.remove="hidden"
+<div wire:loading.class="flex" wire:loading.class.remove="hidden" wire:target="openNotification, goToNotification"
     class="absolute hidden top-0 left-0 w-full h-full z-10 bg-white/45">
     <svg class="animate-spin m-auto h-8 w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
         viewBox="0 0 24 24">

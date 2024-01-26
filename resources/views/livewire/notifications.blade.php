@@ -20,7 +20,7 @@
         class="absolute bg-white border border-gray-700/10 shadow-md rounded-lg right-0 min-w-[30rem]">
         <div class="flex justify-between px-4 py-3 border-b border-b-gray-300">
             <h4 class="font-medium text-lg">Notifications</h4>
-            @if ($notificationFirstOpen && $this->notifications->isNotEmpty())
+            @if ($notificationFirstOpen && $notifications->isNotEmpty())
                 <div class="relative">
                     <button @click="subOpen = !subOpen" class="hover:bg-gray-100">
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"
@@ -33,7 +33,8 @@
                     <ul x-show="subOpen" x-transition x-cloak @click.away="subOpen = false"
                         class="absolute font-semibold z-10 w-44 right-0 shadow-lg border border-gray-700/20 rounded-lg  bg-white">
                         <li class="hover:bg-gray-100 block cursor-pointer px-5 py-3 transition ease-in duration-150">
-                            <button class="w-full text-left">Mark all as read</button>
+                            <button @click="subOpen = false; notificationOpen = false;" wire:click='markAllAsRead'
+                                class="w-full text-left">Mark all as read</button>
                         </li>
                     </ul>
                 </div>
@@ -42,7 +43,7 @@
         <div class="relative py-2 min-h-20 max-h-[30rem] overflow-y-auto">
             <x-notification-spinner />
             @if ($notificationFirstOpen)
-                @forelse ($this->notifications as $notification)
+                @forelse ($notifications as $notification)
                     <div class="flex space-x-4 px-4 py-2 hover:bg-gray-100">
                         <img class="w-14 h-14 rounded-xl" src="{{ $notification->data['user_avatar'] }}" alt="avatar">
                         <a wire:click.prevent="goToNotification('{{ $notification->id }}')"
@@ -56,7 +57,7 @@
                         </a>
                     </div>
                 @empty
-                    <div>No new notification</div>
+                    <div class="text-lg font-semibold h-20 flex justify-center items-center">No new notification</div>
                 @endforelse
             @endif
         </div>
