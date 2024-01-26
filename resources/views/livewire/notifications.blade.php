@@ -1,6 +1,14 @@
-<div x-data="{ notificationOpen: false, subOpen: false }" class="relative b mr-4 z-10">
+<div wire:poll.5s="getCount" x-data="{ notificationOpen: false, subOpen: false }" class="relative b mr-4 z-10">
     <button @click="$wire.openNotification(); notificationOpen = !notificationOpen;"
-        class="hover:bg-gray-200 p-1 rounded-full before:content-['12'] before:absolute before:top-0 before:right-1.5 before:bg-red-600 before:rounded-full before:w-5 before:h-5 before:flex before:justify-center before:min-w-fit before:items-center before:text-white before:font-bold before:border before:border-gray-100 before:text-xxs">
+        class='hover:bg-gray-200 p-1 rounded-full'>
+        @if ($notificationsCount > 0)
+            <span
+                class="absolute top-0 right-1.5 bg-red-600 rounded-full w-5 h-5 flex 
+                      justify-center min-w-fit items-center text-white 
+                      font-bold border border-gray-100 text-xxs">
+                {{ $notificationsCount }}
+            </span>
+        @endif
         <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 27 27" viewBox="0 0 27 27"
             focusable="false">
             <path
@@ -8,11 +16,11 @@
             </path>
         </svg>
     </button>
-    @if ($notificationFirstOpen)
-        <div x-show="notificationOpen" x-transition x-cloak @click.away="notificationOpen = false"
-            class="absolute bg-white border border-gray-700/10 shadow-md rounded-lg right-0 min-w-[30rem]">
-            <div class="flex justify-between px-4 py-3 border-b border-b-gray-300">
-                <h4 class="font-medium text-lg">Notifications</h4>
+    <div x-show="notificationOpen" x-transition x-cloak @click.away="notificationOpen = false"
+        class="absolute bg-white border border-gray-700/10 shadow-md rounded-lg right-0 min-w-[30rem]">
+        <div class="flex justify-between px-4 py-3 border-b border-b-gray-300">
+            <h4 class="font-medium text-lg">Notifications</h4>
+            @if ($notificationFirstOpen && $this->notifications->isNotEmpty())
                 <div class="relative">
                     <button @click="subOpen = !subOpen" class="hover:bg-gray-100">
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"
@@ -29,12 +37,16 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="py-2 max-h-[30rem] overflow-y-auto">
-                @foreach ($this->notifications as $notification)
+            @endif
+        </div>
+        <div class="relative py-2 min-h-20 max-h-[30rem] overflow-y-auto">
+            <x-notification-spinner />
+            @if ($notificationFirstOpen)
+                @forelse ($this->notifications as $notification)
                     <div class="flex space-x-4 px-4 py-2 hover:bg-gray-100">
                         <img class="w-14 h-14 rounded-xl" src="{{ $notification->data['user_avatar'] }}" alt="avatar">
-                        <a href="{{ route('idea.show', $notification->data['idea_slug']) }}">
+                        <a wire:click.prevent="goToNotification('{{ $notification->id }}')"
+                            href="{{ route('idea.show', $notification->data['idea_slug']) . '?comment=' . $notification->data['comment_id'] }}">
                             <p><span class="font-semibold">{{ $notification->data['user_name'] }}</span>
                                 Commented on <span class="font-semibold">{{ $notification->data['idea_title'] }}</span>
                             </p>
@@ -43,10 +55,10 @@
                                 class="text-xs mt-1 text-gray-500">{{ $notification->created_at->diffForHumans() }}</span>
                         </a>
                     </div>
-                @endforeach
-            </div>
+                @empty
+                    <div>No new notification</div>
+                @endforelse
+            @endif
         </div>
-    @endif
-
-
+    </div>
 </div>

@@ -3,7 +3,13 @@
     <livewire:ideas.edit-comment />
     <livewire:ideas.delete-comment />
     @if ($comments->IsNotEmpty())
-        <div
+        <div x-data x-init="@if ($notificationCommentId) const comment = document.getElementById('comment_{{ $notificationCommentId }}')
+            comment.scrollIntoView({ behavior: 'smooth' });
+            comment.classList.add('shadow-lg','shadow-blue-200');
+                setTimeout(() => { 
+                    comment.classList.remove('shadow-lg','shadow-blue-200'); 
+                    comment = null; 
+                }, 5000); @endif"
             class="relative comments-container space-y-6 sm:ml-22 pt-2 mb-8 sm:before:content-[''] sm:before:absolute sm:before:-left-10 sm:before:w-0.75 sm:before:h-full sm:before:bg-gray-200">
             <div class="pt-6">
                 @foreach ($comments as $comment)
