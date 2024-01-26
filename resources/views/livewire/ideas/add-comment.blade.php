@@ -5,7 +5,6 @@
         let lastElement = null
         let hookCompleted = false
         Livewire.hook('morph.added', ({ el }) => {
-            console.log(el)
             if(hookCompleted){
                 return;
             }

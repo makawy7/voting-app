@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Ideas;
 
+use App\Livewire\Traits\WithAuthRedirects;
 use App\Models\Idea;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -10,6 +11,7 @@ use Livewire\Attributes\Title;
 #[Title('Idea')]
 class ShowIdea extends Component
 {
+    use WithAuthRedirects;
     public Idea $idea;
     public $votedByUser;
     public $backUrl;
@@ -31,12 +33,11 @@ class ShowIdea extends Component
     public function resetIdea()
     {
         $this->idea->refresh();
-
     }
     public function vote()
     {
         if (!auth()->check()) {
-            return $this->redirect(route('login'), navigate: true);
+            return $this->redirectToLogin();
         }
 
         if ($this->votedByUser) {

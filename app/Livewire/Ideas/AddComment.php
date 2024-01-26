@@ -2,13 +2,15 @@
 
 namespace App\Livewire\Ideas;
 
+use App\Livewire\Traits\WithAuthRedirects;
 use App\Models\Idea;
 use App\Notifications\CommentAdded;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class AddComment extends Component
-{
+{   
+    use WithAuthRedirects;
     public Idea $idea;
 
     #[Validate('required|min:3')]
@@ -20,7 +22,7 @@ class AddComment extends Component
     public function addComment()
     {
         if (!auth()->check()) {
-            return $this->redirectRoute('login', navigate: true);
+            return $this->redirectToLogin();
         }
         $this->validate();
         $comment = $this->idea->comments()->create([

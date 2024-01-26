@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Ideas;
 
+use App\Livewire\Traits\WithAuthRedirects;
 use App\Models\Idea;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
 class IdeaCard extends Component
 {
+    use WithAuthRedirects;
 
     public $idea;
     public $votedByUser;
@@ -24,9 +26,9 @@ class IdeaCard extends Component
     public function vote()
     {
         if (!auth()->check()) {
-            return $this->redirect(route('login'), navigate: true);
+            return $this->redirectToLogin();
         }
-        
+
         if ($this->votedByUser) {
             $this->idea->unVote(auth()->user());
             $this->voteCount--;

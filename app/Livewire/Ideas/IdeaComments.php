@@ -27,7 +27,7 @@ class IdeaComments extends Component
             $commentsIds = $this->idea->comments()->pluck('id');
             $perPage = (new Comment())->getPerPage();
             $commentIndes = $commentsIds->search($this->notificationCommentId);
-            $page = (int)($commentIndes / $perPage) + 1;
+            $page = (int) ($commentIndes / $perPage) + 1;
             $this->gotoPage($page);
         }
     }
